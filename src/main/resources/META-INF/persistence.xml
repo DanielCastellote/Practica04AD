@@ -8,7 +8,10 @@
 
         <provider>org.hibernate.ogm.jpa.HibernateOgmPersistence</provider>
 
-        <!-- <class> </class> -->
+        <class>dao.Departamento</class>
+        <class>dao.Programador</class>
+        <class>dao.Proyecto</class>
+        <class>dao.Repositorio</class>
 
         <properties>
             <property name="hibernate.ogm.datastore.provider" value="mongodb" />
