@@ -49,26 +49,36 @@ public class Programador {
         return nombre;
     }
 
+    @Basic
+    @Column(name = "fAlta", nullable = false)
     public Date getfAlta() {
         return fAlta;
     }
 
+    @Basic
+    @Column(name = "salario", nullable = false)
     public double getSalario() {
         return salario;
     }
 
+    @Basic
+    @Column(name = "email", nullable = false, length = 100)
     public String getEmail() {
         return email;
     }
 
+    @Basic
+    @Column(name = "contraseña", nullable = false, length = 100)
     public String getContrasena() {
         return contrasena;
     }
 
+    @OneToMany(fetch = FetchType.EAGER, orphanRemoval = true, cascade = CascadeType.REMOVE)
     public Set<Tecnologia> getLenguajes() {
         return lenguajes;
     }
 
+    @OneToMany(fetch = FetchType.EAGER, orphanRemoval = true, cascade = CascadeType.REMOVE)
     public Login getLoginProgramador() {
         return loginProgramador;
     }
@@ -104,5 +114,17 @@ public class Programador {
 
     public void setLoginProgramador(Login loginProgramador) {
         this.loginProgramador = loginProgramador;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Programador{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", fAlta=" + fAlta +
+                ", salario=" + salario +
+                ", email='" + email + '\'' +
+                '}';
     }
 }
