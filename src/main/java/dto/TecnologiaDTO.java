@@ -3,23 +3,18 @@ package dto;
 import lombok.Builder;
 import lombok.Data;
 
-@Builder
 @Data
-public class DepartamentoDTO {
+@Builder
+public class TecnologiaDTO {
 
     private long id;
     private String nombre;
-    private double presupuesto;
-    private double presupuestoAnual;
-
 
     @Override
     public String toString() {
-        return "DepartamentoDTO{" +
+        return "TecnologiaDTO{" +
                 "id=" + id +
                 ", nombre='" + nombre + '\'' +
-                ", presupuesto=" + presupuesto +
-                ", presupuestoAnual=" + presupuestoAnual +
                 '}';
     }
 }

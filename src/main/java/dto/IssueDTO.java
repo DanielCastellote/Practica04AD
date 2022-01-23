@@ -5,17 +5,23 @@ import lombok.Data;
 
 import java.util.Date;
 
-@Builder
 @Data
-public class RepositorioDTO {
+@Builder
+public class IssueDTO {
     private long id;
+    private String titulo;
+    private String texto;
     private Date fCreacion;
+    private String estado;
 
     @Override
     public String toString() {
-        return "RepositorioDTO{" +
+        return "IssueDTO{" +
                 "id=" + id +
+                ", titulo='" + titulo + '\'' +
+                ", texto='" + texto + '\'' +
                 ", fCreacion=" + fCreacion +
+                ", estado='" + estado + '\'' +
                 '}';
     }
 }
