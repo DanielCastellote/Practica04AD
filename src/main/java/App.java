@@ -1,4 +1,4 @@
-import
+
 import Utils.ApplicationProperties;
 
 public class App {
@@ -15,19 +15,13 @@ public class App {
         if (properties.readProperty("database.init").equals("true"))
             blog.initDataBase();
 
-        // Categorías
-        blog.Categories();
-
-        // Usuarios
-        blog.Users();
-
-        // Login
-        blog.Login();
-
-        // Posts
-        blog.Posts();
-
-        // Comments
-        blog.Comments();
+            blog.Departamentos();
+            blog.Proyectos();
+            blog.Programadores();
+            blog.Logins();
+            blog.Repositorios();
+            blog.Tecnologias();
+            blog.Issues();
+            blog.Commits();
     }
 }

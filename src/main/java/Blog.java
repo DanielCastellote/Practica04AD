@@ -17,6 +17,7 @@ public class Blog {
             return instance;
         }
 
+    //TODO BORRAR EJEMPLOS
      public void initDataBase() {
          // Borramos los datos previos
          removeData();
@@ -116,9 +117,30 @@ public class Blog {
          blogDB.drop(); // Si queremos borrar toda la base de datos
      }
 
-     public void
+     public void Commits(){
 
+     }
+     public void Departamentos(){
 
+     }
+     public void Issues(){
+
+     }
+     public void Logins(){
+
+     }
+     public void Programadores(){
+
+     }
+     public void Proyectos(){
+
+     }
+     public void Repositorios(){
+
+     }
+     public void Tecnologias(){
+
+     }
 
      // TODO (BORRAR) EJEMPLOS JOSE LUIS
 
