@@ -3,6 +3,8 @@ import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoDatabase;
 import controller.ProgramadorController;
+import dao.Departamento;
+import dao.Login;
 import dao.Programador;
 import dto.ProgramadorDTO;
 import manager.HibernateController;
@@ -30,9 +32,9 @@ public class Blog {
          HibernateController hc = HibernateController.getInstance();
          hc.open();
          //Programadores
+         System.out.println("Insertando programadores de ejemplo");
          hc.getTransaction().begin();
 
-         System.out.println("Insertando programadores de ejemplo");
          Programador p1 = new Programador("Javier",1200,"javier@gmail.com","1234");
          Programador p2 = new Programador("Daniel",1200,"daniel@gmail.com","5678");
          Programador p3 = new Programador("Jose Luis",2800,"joseluis@gmail.com","12345678");
@@ -42,71 +44,38 @@ public class Blog {
          hc.getManager().persist(p2);
          hc.getManager().persist(p3);
          hc.getManager().persist(p4);
-
          hc.getTransaction().commit();
 
-/*
-         // Usuarios
-         System.out.println("Insertando Usuarios de Ejemplo");
-
+         System.out.println("Insertando departamentos de ejemplo");
          hc.getTransaction().begin();
-         User u1 = new User("Pepe Perez","pepe@pepe.es","1234"); // 5
-         User u2 = new User("Ana Anaya","ana@anaya.es","1234"); // 6
-         User u3 = new User("Paco Perez","paco@perez.es","1234"); // 7
-         User u4 = new User("Son Goku","goku@dragonball.es","1234"); // 8
-         User u5 = new User("Chuck Norris","chuck@norris.es","1234");  // 9
+         Departamento d1 = new Departamento("Recursos Humanos",20500,125000);
+         Departamento d2 = new Departamento("Informatica",30000,250000);
+         Departamento d3 = new Departamento("Limpieza",5000,75000);
+         Departamento d4 = new Departamento("Ciberseguridad",27500,160000);
 
-         hc.getManager().persist(u1);
-         hc.getManager().persist(u2);
-         hc.getManager().persist(u3);
-         hc.getManager().persist(u4);
-         hc.getManager().persist(u5);
-
+         hc.getManager().persist(d1);
+         hc.getManager().persist(d2);
+         hc.getManager().persist(d3);
+         hc.getManager().persist(d4);
          hc.getTransaction().commit();
 
-         // Post
-         System.out.println("Insertando Post de Ejemplo");
-
+         System.out.println("Insertando logins de las personas");
          hc.getTransaction().begin();
-         Post p1 = new Post("Post num 1", "http://post1.com", "Este es el post num 1", u1, c1); //10
-         Post p2 = new Post("Post num 2", "http://post2.com", "Este es el post num 1", u2, c2); //11
-         Post p3 = new Post("Post num 3", "http://post3.com", "Este es el post num 1", u3, c3); //12
-         Post p4 = new Post("Post num 4", "http://post4.com", "Este es el post num 1", u1, c1); //13
-         Post p5 = new Post("Post num 5", "http://post5.com", "Este es el post num 1", u2, c3); //14
+         Login l1 = new Login(1234,true);
+         Login l2 = new Login(5678,false);
+         Login l3 = new Login(1357,true);
+         Login l4 = new Login(2468,false);
 
-         hc.getManager().persist(p1);
-         hc.getManager().persist(p2);
-         hc.getManager().persist(p3);
-         hc.getManager().persist(p4);
-         hc.getManager().persist(p5);
-
+         hc.getManager().persist(l1);
+         hc.getManager().persist(l2);
+         hc.getManager().persist(l3);
+         hc.getManager().persist(l4);
          hc.getTransaction().commit();
 
-         // Comentarios
-         System.out.println("Insertando Comentarios de Ejemplo");
+         System.out.println("Insertando proyectos para trabajar");
+         System.out.println("Insertando repositorios");
+         System.out.println("Insertando tecnologias");
 
-         hc.getTransaction().begin();
-         Comment cm1 = new Comment("Comentario 01,", u1, p1);//15
-         Comment cm2 = new Comment("Comentario 02,", u2, p2);//16
-         Comment cm3 = new Comment("Comentario 03,", u3, p2);//17
-         Comment cm4 = new Comment("Comentario 04,", u1, p3);//18
-         Comment cm5 = new Comment("Comentario 05,", u4, p4);//19
-         Comment cm6 = new Comment("Comentario 06,", u1, p3);//20
-         Comment cm7 = new Comment("Comentario 07,", u4, p4);//21
-         Comment cm8 = new Comment("Comentario 08,", u2, p3);//22
-
-         hc.getManager().persist(cm1);
-         hc.getManager().persist(cm2);
-         hc.getManager().persist(cm3);
-         hc.getManager().persist(cm4);
-         hc.getManager().persist(cm5);
-         hc.getManager().persist(cm6);
-         hc.getManager().persist(cm7);
-         hc.getManager().persist(cm8);
-
-         hc.getTransaction().commit();
-
- */
 
          hc.close();
 
