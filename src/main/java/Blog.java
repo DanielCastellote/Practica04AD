@@ -2,8 +2,12 @@ import com.mongodb.ConnectionString;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoDatabase;
+import controller.ProgramadorController;
 import dao.Programador;
+import dto.ProgramadorDTO;
 import manager.HibernateController;
+
+import java.util.List;
 
 public class Blog {
         private static Blog instance;
@@ -26,23 +30,22 @@ public class Blog {
          HibernateController hc = HibernateController.getInstance();
          hc.open();
          //Programadores
-         Programador p1 = new Programador();
-         Programador p2 = new Programador();
-         Programador p3 = new Programador();
-         // Categorías
          hc.getTransaction().begin();
-         Category c1 = new Category("General"); // 1
-         Category c2 = new Category("Dudas");  // 2
-         Category c3 = new Category("Evaluación"); // 3
-         Category c4 = new Category("Pruebas"); // 4
 
-         hc.getManager().persist(c1);
-         hc.getManager().persist(c2);
-         hc.getManager().persist(c3);
-         hc.getManager().persist(c4);
+         System.out.println("Insertando programadores de ejemplo");
+         Programador p1 = new Programador("Javier",1200,"javier@gmail.com","1234");
+         Programador p2 = new Programador("Daniel",1200,"daniel@gmail.com","5678");
+         Programador p3 = new Programador("Jose Luis",2800,"joseluis@gmail.com","12345678");
+         Programador p4 = new Programador("Javier Palacios",2800,"javipalacios@gmail.com","87654321");
+
+         hc.getManager().persist(p1);
+         hc.getManager().persist(p2);
+         hc.getManager().persist(p3);
+         hc.getManager().persist(p4);
 
          hc.getTransaction().commit();
 
+/*
          // Usuarios
          System.out.println("Insertando Usuarios de Ejemplo");
 
@@ -103,6 +106,8 @@ public class Blog {
 
          hc.getTransaction().commit();
 
+ */
+
          hc.close();
 
      }
@@ -115,6 +120,7 @@ public class Blog {
 //        transactionManager.commit();
          // Lo sutyo sería un controlador
          ConnectionString connectionString = new ConnectionString("mongodb://mongoadmin:mongopass@localhost/test?authSource=admin");
+         //ConnectionString connectionString = new ConnectionString("localhost:8081");
          MongoClient mongoClient = MongoClients.create(connectionString);
 
          // Obtenemos la base de datos que necesitamos
@@ -134,9 +140,7 @@ public class Blog {
      public void Logins(){
 
      }
-     public void Programadores(){
 
-     }
      public void Proyectos(){
 
      }
@@ -147,8 +151,16 @@ public class Blog {
 
      }
 
-     // TODO (BORRAR) EJEMPLOS JOSE LUIS
+    public void Programadores(){
+    System.out.println("INICIO DE PROGRAMADORES")  ;
+        ProgramadorController programadorController = ProgramadorController.getInstance();
+        System.out.println("GET Todos los programadores");
+        List<ProgramadorDTO> listaProgramadores = programadorController.getAllProgramadores();
+        System.out.println(listaProgramadores);
+        }
 
+     // TODO (BORRAR) EJEMPLOS JOSE LUIS
+/*
      public void Comments() {
          System.out.println("INICIO COMENTARIOS");
 
@@ -232,5 +244,8 @@ public class Blog {
          System.out.println(userController.deleteUser(userMapper.toDTO(user)));
 
          System.out.println("FIN COMENTARIOS");
+
+
+
+ */
      }
- }

@@ -1,5 +1,5 @@
 
-import Utils.ApplicationProperties;
+import utils.ApplicationProperties;
 
 public class App {
     public static void main(String[] args) {
@@ -14,14 +14,16 @@ public class App {
 
         if (properties.readProperty("database.init").equals("true"))
             blog.initDataBase();
-
+            blog.Programadores();
+            /*
             blog.Departamentos();
             blog.Proyectos();
-            blog.Programadores();
             blog.Logins();
             blog.Repositorios();
             blog.Tecnologias();
             blog.Issues();
             blog.Commits();
+
+             */
     }
 }
