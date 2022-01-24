@@ -18,6 +18,7 @@ public class ProgramadorMapper extends BaseMapper<Programador, ProgramadorDTO>{
         programador.setEmail(item.getEmail());
         programador.setContrasena(item.getContrasena());
         programador.setLenguajes(item.getLenguajes());
+        programador.setCommits(item.getCommits());
         programador.setLoginProgramador(item.getLogin());
         return programador;
     }
@@ -32,6 +33,7 @@ public class ProgramadorMapper extends BaseMapper<Programador, ProgramadorDTO>{
                 .email(item.getEmail())
                 .contrasena(item.getContrasena())
                 .lenguajes(item.getLenguajes())
+                .commits(item.getCommits())
                 .login(item.getLoginProgramador())
                 .build();
     }

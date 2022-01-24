@@ -1,5 +1,6 @@
 package dto;
 
+import dao.Commit;
 import dao.Login;
 import dao.Tecnologia;
 import lombok.Builder;
@@ -20,6 +21,7 @@ public class ProgramadorDTO {
     private String email;
     private String contrasena;
     private Set<Tecnologia> lenguajes = new HashSet<>();
+    private Set<Commit> commits;
     private Login login= new Login();
 
     @Override
