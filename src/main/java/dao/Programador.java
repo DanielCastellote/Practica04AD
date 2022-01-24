@@ -79,6 +79,7 @@ public class Programador {
     }
 
     @OneToMany(fetch = FetchType.EAGER, orphanRemoval = true, cascade = CascadeType.REMOVE)
+    //@Embedded
     public Login getLoginProgramador() {
         return loginProgramador;
     }

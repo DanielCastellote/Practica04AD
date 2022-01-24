@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 public class DepartamentoDTO {
 
-    private long id;
+    private Long id;
     private String nombre;
     private double presupuesto;
     private double presupuestoAnual;

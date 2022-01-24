@@ -13,7 +13,7 @@ import java.util.Set;
 @Data
 public class ProgramadorDTO {
 
-    private long id;
+    private Long id;
     private String nombre;
     private Date fAlta;
     private double salario;

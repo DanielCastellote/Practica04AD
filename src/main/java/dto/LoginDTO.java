@@ -9,7 +9,7 @@ import java.sql.Timestamp;
 @Builder
 public class LoginDTO {
 
-    private long id;
+    private Long id;
     private Timestamp instIdentificacion;
     private long token;
     private boolean activo;
