@@ -1,6 +1,7 @@
 package dto;
 
 import dao.Programador;
+import dao.Repositorio;
 import lombok.Builder;
 import lombok.Data;
 
@@ -16,6 +17,7 @@ public class CommitDTO {
     private String texto;
     private Date fCreacion;
     private Programador autor;
+    private Repositorio repositorio;
 
     @Override
     public String toString() {
