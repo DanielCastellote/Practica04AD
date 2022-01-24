@@ -1,5 +1,6 @@
 package dto;
 
+import dao.Programador;
 import lombok.Builder;
 import lombok.Data;
 
@@ -9,6 +10,7 @@ public class TecnologiaDTO {
 
     private long id;
     private String nombre;
+    private Programador programador;
 
     @Override
     public String toString() {
