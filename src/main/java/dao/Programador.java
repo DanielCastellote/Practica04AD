@@ -73,7 +73,7 @@ public class Programador {
         return contrasena;
     }
 
-    @OneToMany(fetch = FetchType.EAGER, orphanRemoval = true, cascade = CascadeType.REMOVE)
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "programador", orphanRemoval = true, cascade = CascadeType.REMOVE)
     public Set<Tecnologia> getLenguajes() {
         return lenguajes;
     }

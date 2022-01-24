@@ -12,6 +12,10 @@
         <class>dao.Programador</class>
         <class>dao.Proyecto</class>
         <class>dao.Repositorio</class>
+        <class>dao.Commit</class>
+        <class>dao.Issue</class>
+        <class>dao.Login</class>
+        <class>dao.Tecnologia</class>
 
         <properties>
             <property name="hibernate.ogm.datastore.provider" value="mongodb" />
