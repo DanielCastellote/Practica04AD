@@ -24,6 +24,7 @@ public class Programador {
     private String email;
     private String contrasena;
     private Set<Tecnologia> lenguajes;
+    private Set<Commit> commits;
     private Login loginProgramador;
 
     public Programador(String nombre, double salario, String email, String contrasena) {
@@ -33,6 +34,7 @@ public class Programador {
         this.email = email;
         this.contrasena = Cifrador.getInstance().SHA256(contrasena);
         this.lenguajes = new HashSet<>();
+        this.commits = new HashSet<>();
         this.loginProgramador = new Login();
     }
 
@@ -78,6 +80,11 @@ public class Programador {
         return lenguajes;
     }
 
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "programador", orphanRemoval = true, cascade = CascadeType.REMOVE)
+    public Set<Commit> getCommits() {
+        return commits;
+    }
+
     @OneToMany(fetch = FetchType.EAGER, orphanRemoval = true, cascade = CascadeType.REMOVE)
     //@Embedded
     public Login getLoginProgramador() {
@@ -113,10 +120,13 @@ public class Programador {
         this.lenguajes = lenguajes;
     }
 
+    public void setCommits(Set<Commit> commits) {
+        this.commits = commits;
+    }
+
     public void setLoginProgramador(Login loginProgramador) {
         this.loginProgramador = loginProgramador;
     }
-
 
     @Override
     public String toString() {
@@ -126,6 +136,10 @@ public class Programador {
                 ", fAlta=" + fAlta +
                 ", salario=" + salario +
                 ", email='" + email + '\'' +
+                ", contrasena='" + contrasena + '\'' +
+                ", lenguajes=" + lenguajes +
+                ", commits=" + commits +
+                ", loginProgramador=" + loginProgramador +
                 '}';
     }
 }

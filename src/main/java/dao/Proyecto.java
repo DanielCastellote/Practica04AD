@@ -19,11 +19,11 @@ public class Proyecto {
     private Date fInicio;
     private Date fFin;
 
-    public Proyecto(String nombre, double presupuesto, Date fInicio, Date fFin) {
+    public Proyecto(String nombre, double presupuesto) {
         this.nombre = nombre;
         this.presupuesto = presupuesto;
-        this.fInicio = fInicio;
-        this.fFin = fFin;
+        this.fInicio = new Date(System.currentTimeMillis());
+        this.fFin = new Date(System.currentTimeMillis());
     }
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)

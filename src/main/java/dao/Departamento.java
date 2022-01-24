@@ -17,6 +17,7 @@ public class Departamento {
     private double presupuesto;
     private double presupuestoAnual;
 
+
     public Departamento(String nombre, double presupuesto, double presupuestoAnual) {
         this.nombre = nombre;
         this.presupuesto = presupuesto;
