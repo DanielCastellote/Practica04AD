@@ -20,6 +20,19 @@ public class Commit {
     private Programador autor;
     private Repositorio repositorio;
 
+    @ManyToOne
+    @JoinColumn(name = "programador_id")
+    private Programador programador;
+
+    public Programador getProgramador() {
+        return programador;
+    }
+
+    public void setProgramador(Programador programador) {
+        this.programador = programador;
+    }
+
+
     public Commit(String titulo, String texto, Date fCreacion, Programador autor, Repositorio repositorio) {
         this.titulo = titulo;
         this.texto = texto;
@@ -27,6 +40,7 @@ public class Commit {
         this.autor = autor;
         this.repositorio = repositorio;
     }
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)

@@ -1,6 +1,7 @@
 package dao;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -8,6 +9,7 @@ import java.sql.Timestamp;
 import java.util.Date;
 import java.util.Set;
 
+@Data
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
@@ -16,64 +18,43 @@ import java.util.Set;
 public class Login {
 
     private long id;
-    private Timestamp instIdentificacion;
-    private long token;
+    private Timestamp instSalida;
+    private String token;
     private boolean activo;
 
-    public Login(long token, boolean activo) {
-        this.instIdentificacion= new Timestamp(System.currentTimeMillis());
-        this.token = token;
-        this.activo = activo;
-    }
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "id", nullable = false)
     public long getId() {
         return id;
     }
-
     @Basic
-    @Column(name = "instIdentificacion", nullable = false, length = 100)
-    public Timestamp getInstIdentificacion() {
-        return instIdentificacion;
+    @Column(name = "ultimo_acceso", nullable = false)
+    public Timestamp getInstSalida() {
+        return instSalida;
     }
-
-    @Basic
+    @Basic //TODO MIRAR EN LOGIN DAO DE JOSE LUIS
     @Column(name = "token", nullable = false, length = 100)
-    public long getToken() {
+    public String getToken() {
         return token;
     }
-
     @Basic
-    @Column(name = "activo", nullable = false, length = 100)
+    @Column(name = "Actividad", nullable = false, length = 100)
     public boolean isActivo() {
         return activo;
     }
-
 
     public void setId(long id) {
         this.id = id;
     }
 
-    public void setInstIdentificacion(Timestamp instIdentificacion) {
-        this.instIdentificacion = instIdentificacion;
+    public void setInstSalida(Timestamp instSalida) {
+        this.instSalida = instSalida;
     }
 
-    public void setToken(long token) {
+    public void setToken(String token) {
         this.token = token;
     }
 
     public void setActivo(boolean activo) {
         this.activo = activo;
-    }
-
-    @Override
-    public String toString() {
-        return "Login{" +
-                "id=" + id +
-                ", instIdentificacion=" + instIdentificacion +
-                ", token=" + token +
-                ", activo=" + activo +
-                '}';
     }
 }
