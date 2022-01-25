@@ -1,5 +1,6 @@
 package dto;
 
+import dao.Repositorio;
 import lombok.Builder;
 import lombok.Data;
 
@@ -13,6 +14,7 @@ public class IssueDTO {
     private String texto;
     private Date fCreacion;
     private String estado;
+    private Repositorio repositorio;
 
     @Override
     public String toString() {

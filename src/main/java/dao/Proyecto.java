@@ -13,6 +13,7 @@ import java.util.Date;
 @Table(name = "proyecto")
 @NamedQuery(name = "Proyecto.findAll", query = "SELECT c FROM Proyecto c")
 public class Proyecto {
+
     private long id;
     private String nombre;
     private double presupuesto;
