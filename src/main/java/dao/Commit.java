@@ -33,10 +33,10 @@ public class Commit {
     }
 
 
-    public Commit(String titulo, String texto, Date fCreacion, Programador autor, Repositorio repositorio) {
+    public Commit(String titulo, String texto, Programador autor, Repositorio repositorio) {
         this.titulo = titulo;
         this.texto = texto;
-        this.fCreacion = fCreacion;
+        this.fCreacion = new Date(System.currentTimeMillis());
         this.autor = autor;
         this.repositorio = repositorio;
     }

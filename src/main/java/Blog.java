@@ -7,6 +7,7 @@ import dao.*;
 import dto.ProgramadorDTO;
 import manager.HibernateController;
 
+import java.util.Date;
 import java.util.List;
 
 public class Blog {
@@ -85,13 +86,60 @@ public class Blog {
          System.out.println("Insertando tecnologias");
          hc.getTransaction().begin();
          Tecnologia tc1= new Tecnologia("Java",p1);
-         Tecnologia tc2= new Tecnologia("Phyton",p2);
-         Tecnologia tc3= new Tecnologia("C++",p3);
-         Tecnologia tc4= new Tecnologia("Java",p4);
+         Tecnologia tc2= new Tecnologia("Phyton",p1);
+         Tecnologia tc3= new Tecnologia("C++",p2);
+         Tecnologia tc4= new Tecnologia("Java",p2);
+         Tecnologia tc5= new Tecnologia("Spring",p3);
+         Tecnologia tc6= new Tecnologia("Vue",p4);
+         Tecnologia tc7= new Tecnologia("Kotlin",p4);
+         Tecnologia tc8= new Tecnologia("Php",p4);
          hc.getManager().persist(tc1);
          hc.getManager().persist(tc2);
          hc.getManager().persist(tc3);
          hc.getManager().persist(tc4);
+         hc.getManager().persist(tc5);
+         hc.getManager().persist(tc6);
+         hc.getTransaction().commit();
+
+         System.out.println("Insertando Commits");
+         hc.getTransaction().begin();
+         Commit c1 = new Commit("Readme Update","",p1,r1);
+         Commit c2 = new Commit("Diagrama Update","",p2,r2);
+         Commit c3 = new Commit("Subida de fotos","",p2,r3);
+         Commit c4 = new Commit("Controller correccion","",p3,r4);
+         Commit c5 = new Commit("Proyect Update","",p3,r4);
+         Commit c6 = new Commit("Readme Update 3.0 correccion","",p3,r4);
+         Commit c7 = new Commit("Inyeccion dependencias update","",p1,r2);
+         Commit c8 = new Commit("Creators update","",p3,r1);
+         hc.getManager().persist(c1);
+         hc.getManager().persist(c2);
+         hc.getManager().persist(c3);
+         hc.getManager().persist(c4);
+         hc.getManager().persist(c5);
+         hc.getManager().persist(c6);
+         hc.getManager().persist(c7);
+         hc.getManager().persist(c8);
+         hc.getTransaction().commit();
+
+         System.out.println("Insertando Issues");
+         hc.getTransaction().begin();
+         Issue issu1 = new Issue("Problema ordenador","no me funciona el ordenador",r1,"Terminado");
+         Issue issu2 = new Issue("Problema descanso","no tenemos suficiente descanso",r1,"En proceso");
+         Issue issu3 = new Issue("Cafeteria precios","los cafes son muy caros",r1,"Terminado");
+         Issue issu4 = new Issue("Horario flexible","necesito recoger a mis hijos",r2,"En proceso");
+         Issue issu5 = new Issue("Guarderia niños","necesito dejar a mis niños aqui",r3,"Terminado");
+         Issue issu6 = new Issue("Gotera techo","me caen gotas en mi escritorio",r3,"Terminado");
+         Issue issu7 = new Issue("Baño planta 3","está muy sucio el suelo",r4,"Terminado");
+         Issue issu8 = new Issue("Escaleras","necesito que habiliten escaleras mecanicas",r4,"En proceso");
+         hc.getManager().persist(issu1);
+         hc.getManager().persist(issu2);
+         hc.getManager().persist(issu3);
+         hc.getManager().persist(issu4);
+         hc.getManager().persist(issu5);
+         hc.getManager().persist(issu6);
+         hc.getManager().persist(issu7);
+         hc.getManager().persist(issu8);
+         hc.getTransaction().commit();
 
 
          hc.close();
