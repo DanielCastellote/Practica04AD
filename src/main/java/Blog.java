@@ -29,14 +29,27 @@ public class Blog {
 
          HibernateController hc = HibernateController.getInstance();
          hc.open();
+
+         System.out.println("Insertando proyectos para trabajar");
+         hc.getTransaction().begin();
+         Proyecto proy1 = new Proyecto("Gestion Polideportivo",250000);
+         Proyecto proy2 = new Proyecto("Gestion Peluqueria",125000);
+         Proyecto proy3 = new Proyecto("Gestion Restaurante",275000);
+         Proyecto proy4 = new Proyecto("Gestion Baños",50000);
+         hc.getManager().persist(proy1);
+         hc.getManager().persist(proy2);
+         hc.getManager().persist(proy3);
+         hc.getManager().persist(proy4);
+         hc.getTransaction().commit();
+
          //Programadores
          System.out.println("Insertando programadores de ejemplo");
          hc.getTransaction().begin();
 
-         Programador p1 = new Programador("Javier",1200,"javier@gmail.com","1234");
-         Programador p2 = new Programador("Daniel",1200,"daniel@gmail.com","5678");
-         Programador p3 = new Programador("Jose Luis",2800,"joseluis@gmail.com","12345678");
-         Programador p4 = new Programador("Javier Palacios",2800,"javipalacios@gmail.com","87654321");
+         Programador p1 = new Programador("Javier",1200,"javier@gmail.com","1234",proy1);
+         Programador p2 = new Programador("Daniel",1200,"daniel@gmail.com","5678",proy2);
+         Programador p3 = new Programador("Jose Luis",2800,"joseluis@gmail.com","12345678",proy3);
+         Programador p4 = new Programador("Javier Palacios",2800,"javipalacios@gmail.com","87654321",proy3);
 
          hc.getManager().persist(p1);
          hc.getManager().persist(p2);
@@ -57,17 +70,7 @@ public class Blog {
          hc.getManager().persist(d4);
          hc.getTransaction().commit();
 
-         System.out.println("Insertando proyectos para trabajar");
-         hc.getTransaction().begin();
-         Proyecto proy1 = new Proyecto("Gestion Polideportivo",250000);
-         Proyecto proy2 = new Proyecto("Gestion Peluqueria",125000);
-         Proyecto proy3 = new Proyecto("Gestion Restaurante",275000);
-         Proyecto proy4 = new Proyecto("Gestion Baños",50000);
-         hc.getManager().persist(proy1);
-         hc.getManager().persist(proy2);
-         hc.getManager().persist(proy3);
-         hc.getManager().persist(proy4);
-         hc.getTransaction().commit();
+
 
 
          System.out.println("Insertando repositorios");

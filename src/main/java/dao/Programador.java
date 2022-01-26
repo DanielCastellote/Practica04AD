@@ -25,9 +25,22 @@ public class Programador {
     private String contrasena;
     private Set<Tecnologia> lenguajes;
     private Set<Commit> commits;
+    private Proyecto proyecto;
     private Login loginProgramador;
 
-    public Programador(String nombre, double salario, String email, String contrasena) {
+    @ManyToOne
+    @JoinColumn(name = "programadores_proyecto_id")
+    private Proyecto programadoresProyecto;
+
+    public Proyecto getProgramadoresProyecto() {
+        return programadoresProyecto;
+    }
+
+    public void setProgramadoresProyecto(Proyecto programadoresProyecto) {
+        this.programadoresProyecto = programadoresProyecto;
+    }
+
+    public Programador(String nombre, double salario, String email, String contrasena, Proyecto proyecto) {
         this.nombre = nombre;
         this.fAlta = new Date(System.currentTimeMillis());
         this.salario = salario;
@@ -35,6 +48,7 @@ public class Programador {
         this.contrasena = Cifrador.getInstance().SHA256(contrasena);
         this.lenguajes = new HashSet<Tecnologia>();
         this.commits = new HashSet<Commit>();
+        this.programadoresProyecto= new Proyecto();
         this.loginProgramador = new Login();
     }
 
@@ -84,9 +98,13 @@ public class Programador {
     public Set<Commit> getCommits() {
         return commits;
     }
+    @ManyToOne
+    @JoinColumn(name = "proyecto_id", referencedColumnName = "id", nullable = false)
+    public Proyecto getProyecto() {
+        return proyecto;
+    }
 
-
-    @OneToMany(fetch = FetchType.EAGER,mappedBy = "programador" ,orphanRemoval = true, cascade = CascadeType.REMOVE)
+    @ManyToOne
     public Login getLoginProgramador() {
         return loginProgramador;
     }
@@ -122,6 +140,10 @@ public class Programador {
 
     public void setCommits(Set<Commit> commits) {
         this.commits = commits;
+    }
+
+    public void setProyecto(Proyecto proyecto) {
+        this.proyecto = proyecto;
     }
 
     public void setLoginProgramador(Login loginProgramador) {
