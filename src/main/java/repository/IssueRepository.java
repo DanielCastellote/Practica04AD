@@ -1,7 +1,7 @@
 package repository;
 
-import dao.Departamento;
-import dao.Proyecto;
+import dao.Commit;
+import dao.Issue;
 import dao.Repositorio;
 import manager.HibernateController;
 
@@ -9,40 +9,40 @@ import javax.persistence.TypedQuery;
 import java.sql.SQLException;
 import java.util.List;
 
-public class ProyectoRepository implements CrudRepository<Proyecto,Long>{
+public class IssueRepository implements CrudRepository<Issue,Long>{
 
     @Override
-    public List<Proyecto> findAll() {
+    public List<Issue> findAll() {
         HibernateController hc = HibernateController.getInstance();
         hc.open();
-        TypedQuery<Proyecto> query = hc.getManager().createNamedQuery("Proyecto.findAll", Proyecto.class);
-        List<Proyecto> list = query.getResultList();
+        TypedQuery<Issue> query = hc.getManager().createNamedQuery("Issue.findAll", Issue.class);
+        List<Issue> list = query.getResultList();
         hc.close();
         return list;
     }
 
     @Override
-    public Proyecto getById(Long ID) throws SQLException {
+    public Issue getById(Long ID) throws SQLException {
         HibernateController hc = HibernateController.getInstance();
         hc.open();
-        Proyecto proyecto = hc.getManager().find(Proyecto.class, ID);
+        Issue issue = hc.getManager().find(Issue.class, ID);
         hc.close();
-        if (proyecto != null)
-            return proyecto;
-        throw new SQLException("Error ProyectoRepository no existe proyecto con ID: " + ID);
+        if (issue != null)
+            return issue;
+        throw new SQLException("Error IssueRepository no existe issue con ID: " + ID);
     }
 
     @Override
-    public Proyecto save(Proyecto proyecto) throws SQLException {
+    public Issue save(Issue issue) throws SQLException {
         HibernateController hc = HibernateController.getInstance();
         hc.open();
         try {
             hc.getTransaction().begin();
-            hc.getManager().persist(proyecto);
+            hc.getManager().persist(issue);
             hc.getTransaction().commit();
-            return proyecto;
+            return issue;
         } catch (Exception e) {
-            throw new SQLException("Error ProyectoRepository al insertar proyecto en BD:" + e.getMessage());
+            throw new SQLException("Error IssueRepository al insertar issue en BD:" + e.getMessage());
         } finally {
             if (hc.getTransaction().isActive()) {
                 hc.getTransaction().rollback();
@@ -52,16 +52,16 @@ public class ProyectoRepository implements CrudRepository<Proyecto,Long>{
     }
 
     @Override
-    public Proyecto update(Proyecto proyecto) throws SQLException {
+    public Issue update(Issue issue) throws SQLException {
         HibernateController hc = HibernateController.getInstance();
         hc.open();
         try {
             hc.getTransaction().begin();
-            hc.getManager().merge(proyecto);
+            hc.getManager().merge(issue);
             hc.getTransaction().commit();
-            return proyecto;
+            return issue;
         } catch (Exception e) {
-            throw new SQLException("Error ProyectoRepository al actualizar proyecto con id: " + proyecto.getId() + ": " + e.getMessage());
+            throw new SQLException("Error IssueRepository al actualizar issue con id: " + issue.getId() + ": " + e.getMessage());
         } finally {
             if (hc.getTransaction().isActive()) {
                 hc.getTransaction().rollback();
@@ -72,17 +72,17 @@ public class ProyectoRepository implements CrudRepository<Proyecto,Long>{
     }
 
     @Override
-    public Proyecto delete(Proyecto proyecto) throws SQLException {
+    public Issue delete(Issue issue) throws SQLException {
         HibernateController hc = HibernateController.getInstance();
         hc.open();
         try {
             hc.getTransaction().begin();
-            proyecto = hc.getManager().find(Proyecto.class, proyecto.getId());
-            hc.getManager().remove(proyecto);
+            issue = hc.getManager().find(Issue.class, issue.getId());
+            hc.getManager().remove(issue);
             hc.getTransaction().commit();
-            return proyecto;
+            return issue;
         } catch (Exception e) {
-            throw new SQLException("Error ProyectoRepository al eliminar proyecto con id: " + proyecto.getId() + ": " + e.getMessage());
+            throw new SQLException("Error IssueRepository al eliminar issue con id: " + issue.getId() + ": " + e.getMessage());
         } finally {
             if (hc.getTransaction().isActive()) {
                 hc.getTransaction().rollback();

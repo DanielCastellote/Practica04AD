@@ -1,7 +1,7 @@
 package repository;
 
+import dao.Commit;
 import dao.Departamento;
-import dao.Proyecto;
 import dao.Repositorio;
 import manager.HibernateController;
 
@@ -9,40 +9,40 @@ import javax.persistence.TypedQuery;
 import java.sql.SQLException;
 import java.util.List;
 
-public class ProyectoRepository implements CrudRepository<Proyecto,Long>{
+public class CommitRepository implements CrudRepository<Commit,Long>{
 
     @Override
-    public List<Proyecto> findAll() {
+    public List<Commit> findAll() {
         HibernateController hc = HibernateController.getInstance();
         hc.open();
-        TypedQuery<Proyecto> query = hc.getManager().createNamedQuery("Proyecto.findAll", Proyecto.class);
-        List<Proyecto> list = query.getResultList();
+        TypedQuery<Commit> query = hc.getManager().createNamedQuery("Commit.findAll", Commit.class);
+        List<Commit> list = query.getResultList();
         hc.close();
         return list;
     }
 
     @Override
-    public Proyecto getById(Long ID) throws SQLException {
+    public Commit getById(Long ID) throws SQLException {
         HibernateController hc = HibernateController.getInstance();
         hc.open();
-        Proyecto proyecto = hc.getManager().find(Proyecto.class, ID);
+        Commit commit = hc.getManager().find(Commit.class, ID);
         hc.close();
-        if (proyecto != null)
-            return proyecto;
-        throw new SQLException("Error ProyectoRepository no existe proyecto con ID: " + ID);
+        if (commit != null)
+            return commit;
+        throw new SQLException("Error CommitRepository no existe commit con ID: " + ID);
     }
 
     @Override
-    public Proyecto save(Proyecto proyecto) throws SQLException {
+    public Commit save(Commit commit) throws SQLException {
         HibernateController hc = HibernateController.getInstance();
         hc.open();
         try {
             hc.getTransaction().begin();
-            hc.getManager().persist(proyecto);
+            hc.getManager().persist(commit);
             hc.getTransaction().commit();
-            return proyecto;
+            return commit;
         } catch (Exception e) {
-            throw new SQLException("Error ProyectoRepository al insertar proyecto en BD:" + e.getMessage());
+            throw new SQLException("Error CommitRepository al insertar commit en BD:" + e.getMessage());
         } finally {
             if (hc.getTransaction().isActive()) {
                 hc.getTransaction().rollback();
@@ -52,16 +52,16 @@ public class ProyectoRepository implements CrudRepository<Proyecto,Long>{
     }
 
     @Override
-    public Proyecto update(Proyecto proyecto) throws SQLException {
+    public Commit update(Commit commit) throws SQLException {
         HibernateController hc = HibernateController.getInstance();
         hc.open();
         try {
             hc.getTransaction().begin();
-            hc.getManager().merge(proyecto);
+            hc.getManager().merge(commit);
             hc.getTransaction().commit();
-            return proyecto;
+            return commit;
         } catch (Exception e) {
-            throw new SQLException("Error ProyectoRepository al actualizar proyecto con id: " + proyecto.getId() + ": " + e.getMessage());
+            throw new SQLException("Error CommitRepository al actualizar commit con id: " + commit.getId() + ": " + e.getMessage());
         } finally {
             if (hc.getTransaction().isActive()) {
                 hc.getTransaction().rollback();
@@ -72,17 +72,17 @@ public class ProyectoRepository implements CrudRepository<Proyecto,Long>{
     }
 
     @Override
-    public Proyecto delete(Proyecto proyecto) throws SQLException {
+    public Commit delete(Commit commit) throws SQLException {
         HibernateController hc = HibernateController.getInstance();
         hc.open();
         try {
             hc.getTransaction().begin();
-            proyecto = hc.getManager().find(Proyecto.class, proyecto.getId());
-            hc.getManager().remove(proyecto);
+            commit = hc.getManager().find(Commit.class, commit.getId());
+            hc.getManager().remove(commit);
             hc.getTransaction().commit();
-            return proyecto;
+            return commit;
         } catch (Exception e) {
-            throw new SQLException("Error ProyectoRepository al eliminar proyecto con id: " + proyecto.getId() + ": " + e.getMessage());
+            throw new SQLException("Error CommitRepository al eliminar commit con id: " + commit.getId() + ": " + e.getMessage());
         } finally {
             if (hc.getTransaction().isActive()) {
                 hc.getTransaction().rollback();
