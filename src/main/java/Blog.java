@@ -70,9 +70,6 @@ public class Blog {
          hc.getManager().persist(d4);
          hc.getTransaction().commit();
 
-
-
-
          System.out.println("Insertando repositorios");
          hc.getTransaction().begin();
          Repositorio r1 = new Repositorio();
