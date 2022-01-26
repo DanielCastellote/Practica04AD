@@ -1,5 +1,6 @@
 package dto;
 
+import dao.Programador;
 import lombok.Builder;
 import lombok.Data;
 
@@ -13,6 +14,7 @@ public class LoginDTO {
     private Timestamp instIdentificacion;
     private long token;
     private boolean activo;
+    private Programador programador;
 
     @Override
     public String toString() {
@@ -21,6 +23,7 @@ public class LoginDTO {
                 ", instIdentificacion=" + instIdentificacion +
                 ", token=" + token +
                 ", activo=" + activo +
+                ", programador=" + programador +
                 '}';
     }
 }
