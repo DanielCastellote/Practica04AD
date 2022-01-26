@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @NoArgsConstructor
@@ -19,12 +21,14 @@ public class Proyecto {
     private double presupuesto;
     private Date fInicio;
     private Date fFin;
+    private Set<Programador> programadores;
 
     public Proyecto(String nombre, double presupuesto) {
         this.nombre = nombre;
         this.presupuesto = presupuesto;
         this.fInicio = new Date(System.currentTimeMillis());
         this.fFin = new Date(System.currentTimeMillis());
+        this.programadores = new HashSet<Programador>();
     }
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -47,8 +51,16 @@ public class Proyecto {
     public Date getfInicio() {
         return fInicio;
     }
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "programadoresProyecto", orphanRemoval = true, cascade = CascadeType.REMOVE)
+    public Set<Programador> getProgramadores() {
+        return programadores;
+    }
+
     @Basic
     @Column(name = "fechaFin", nullable = false, length = 100)
+
+
     public Date getfFin() {
         return fFin;
     }
@@ -72,6 +84,11 @@ public class Proyecto {
     public void setfFin(Date fFin) {
         this.fFin = fFin;
     }
+
+    public void setProgramadores(Set<Programador> programadores) {
+        this.programadores = programadores;
+    }
+
 
     @Override
     public String toString() {
