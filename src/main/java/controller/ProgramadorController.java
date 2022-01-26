@@ -10,11 +10,8 @@ import java.util.List;
 public class ProgramadorController {
     private static ProgramadorController controller = null;
 
-    // Mi Servicio unido al repositorio
     private final ProgramadorService programadorService;
 
-
-    // Implementamos nuestro Singleton para el controlador
     private ProgramadorController(ProgramadorService programadorService) {
         this.programadorService = programadorService;
     }
@@ -27,7 +24,6 @@ public class ProgramadorController {
     }
 
     public List<ProgramadorDTO> getAllProgramadores() {
-        // Vamos a devolver el JSON de las categorías
         try {
             return programadorService.getAllProgramador();
         } catch (SQLException e) {
@@ -37,7 +33,6 @@ public class ProgramadorController {
     }
 
     public ProgramadorDTO getProgramadorById(Long id) {
-        // Vamos a devolver el JSON de las categorías
         try {
             return programadorService.getProgramadorById(id);
         } catch (SQLException e) {
