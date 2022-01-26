@@ -17,9 +17,16 @@ public class Issue {
     private String titulo;
     private String texto;
     private Date fCreacion;
-    private Programador autor;
     private Repositorio repositorio;
     private String estado;
+
+    public Issue(String titulo, String texto, Repositorio repositorio, String estado) {
+        this.titulo = titulo;
+        this.texto = texto;
+        this.repositorio = repositorio;
+        this.estado = estado;
+        this.fCreacion= new Date(System.currentTimeMillis());
+    }
 
     @ManyToOne
     @JoinColumn(name = "programador_id")
@@ -54,11 +61,7 @@ public class Issue {
     public Date getfCreacion() {
         return fCreacion;
     }
-    @ManyToOne
-    @JoinColumn(name = "programador_id", referencedColumnName = "id", nullable = false)
-    public Programador getAutor() {
-        return autor;
-    }
+
     @ManyToOne
     @JoinColumn(name = "repositorio_id", referencedColumnName = "id", nullable = false)
     public Repositorio getRepositorio() {
@@ -86,15 +89,22 @@ public class Issue {
         this.fCreacion = fCreacion;
     }
 
-    public void setAutor(Programador autor) {
-        this.autor = autor;
-    }
-
     public void setRepositorio(Repositorio repositorio) {
         this.repositorio = repositorio;
     }
 
     public void setEstado(String estado) {
         this.estado = estado;
+    }
+
+    @Override
+    public String toString() {
+        return "Issue{" +
+                "id=" + id +
+                ", titulo='" + titulo + '\'' +
+                ", texto='" + texto + '\'' +
+                ", fCreacion=" + fCreacion +
+                ", estado='" + estado + '\'' +
+                '}';
     }
 }

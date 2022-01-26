@@ -25,7 +25,6 @@ public class Programador {
     private String contrasena;
     private Set<Tecnologia> lenguajes;
     private Set<Commit> commits;
-    private Set<Issue> issues;
     private Login loginProgramador;
 
     public Programador(String nombre, double salario, String email, String contrasena) {
@@ -36,7 +35,6 @@ public class Programador {
         this.contrasena = Cifrador.getInstance().SHA256(contrasena);
         this.lenguajes = new HashSet<Tecnologia>();
         this.commits = new HashSet<Commit>();
-        this.issues = new HashSet<Issue>();
         this.loginProgramador = new Login();
     }
 
@@ -87,10 +85,6 @@ public class Programador {
         return commits;
     }
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "programador", orphanRemoval = true, cascade = CascadeType.REMOVE)
-    public Set<Issue> getIssues() {
-        return issues;
-    }
 
     @OneToMany(fetch = FetchType.EAGER,mappedBy = "programador" ,orphanRemoval = true, cascade = CascadeType.REMOVE)
     public Login getLoginProgramador() {
@@ -130,9 +124,6 @@ public class Programador {
         this.commits = commits;
     }
 
-    public void setIssues(Set<Issue> issues) {
-        this.issues = issues;
-    }
     public void setLoginProgramador(Login loginProgramador) {
         this.loginProgramador = loginProgramador;
     }
