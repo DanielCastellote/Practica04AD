@@ -19,7 +19,6 @@ public class ProgramadorMapper extends BaseMapper<Programador, ProgramadorDTO>{
         programador.setContrasena(item.getContrasena());
         programador.setLenguajes(item.getLenguajes());
         programador.setCommits(item.getCommits());
-        programador.setIssues(item.getIssues());
         programador.setLoginProgramador(item.getLoginProgramador());
         return programador;
     }
@@ -35,7 +34,6 @@ public class ProgramadorMapper extends BaseMapper<Programador, ProgramadorDTO>{
                 .contrasena(item.getContrasena())
                 .lenguajes(item.getLenguajes())
                 .commits(item.getCommits())
-                .issues(item.getIssues())
                 .loginProgramador(item.getLoginProgramador())
                 .build();
     }

@@ -9,7 +9,7 @@ import java.util.Date;
 @Data
 public class ProyectoDTO {
 
-    private long id;
+    private Long id;
     private String nombre;
     private double presupuesto;
     private Date fInicio;

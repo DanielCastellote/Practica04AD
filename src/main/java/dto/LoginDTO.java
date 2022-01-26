@@ -12,7 +12,7 @@ public class LoginDTO {
 
     private Long id;
     private Timestamp instIdentificacion;
-    private long token;
+    private String token;
     private boolean activo;
     private Programador programador;
 

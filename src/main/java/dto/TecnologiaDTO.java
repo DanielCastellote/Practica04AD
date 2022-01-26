@@ -8,7 +8,7 @@ import lombok.Data;
 @Builder
 public class TecnologiaDTO {
 
-    private long id;
+    private Long id;
     private String nombre;
     private Programador programador;
 

@@ -9,7 +9,8 @@ import java.util.Date;
 @Data
 @Builder
 public class IssueDTO {
-    private long id;
+
+    private Long id;
     private String titulo;
     private String texto;
     private Date fCreacion;

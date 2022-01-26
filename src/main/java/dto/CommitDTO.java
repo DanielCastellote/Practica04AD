@@ -12,7 +12,7 @@ import java.util.Date;
 @Builder
 public class CommitDTO {
 
-    private long id;
+    private Long id;
     private String titulo;
     private String texto;
     private Date fCreacion;
