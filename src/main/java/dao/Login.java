@@ -21,6 +21,9 @@ public class Login {
     private Timestamp instSalida;
     private String token;
     private boolean activo;
+    @ManyToOne
+    @JoinColumn(name = "programador_id")
+    private Programador programador;
 
     @Id
     public long getId() {
