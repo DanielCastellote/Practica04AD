@@ -3,9 +3,7 @@ import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoDatabase;
 import controller.ProgramadorController;
-import dao.Departamento;
-import dao.Login;
-import dao.Programador;
+import dao.*;
 import dto.ProgramadorDTO;
 import manager.HibernateController;
 
@@ -59,22 +57,41 @@ public class Blog {
          hc.getManager().persist(d4);
          hc.getTransaction().commit();
 
-         System.out.println("Insertando logins de las personas");
+         System.out.println("Insertando proyectos para trabajar");
          hc.getTransaction().begin();
-         Login l1 = new Login(1234,true);
-         Login l2 = new Login(5678,false);
-         Login l3 = new Login(1357,true);
-         Login l4 = new Login(2468,false);
-
-         hc.getManager().persist(l1);
-         hc.getManager().persist(l2);
-         hc.getManager().persist(l3);
-         hc.getManager().persist(l4);
+         Proyecto proy1 = new Proyecto("Gestion Polideportivo",250000);
+         Proyecto proy2 = new Proyecto("Gestion Peluqueria",125000);
+         Proyecto proy3 = new Proyecto("Gestion Restaurante",275000);
+         Proyecto proy4 = new Proyecto("Gestion Baños",50000);
+         hc.getManager().persist(proy1);
+         hc.getManager().persist(proy2);
+         hc.getManager().persist(proy3);
+         hc.getManager().persist(proy4);
          hc.getTransaction().commit();
 
-         System.out.println("Insertando proyectos para trabajar");
+
          System.out.println("Insertando repositorios");
+         hc.getTransaction().begin();
+         Repositorio r1 = new Repositorio();
+         Repositorio r2 = new Repositorio();
+         Repositorio r3 = new Repositorio();
+         Repositorio r4 = new Repositorio();
+         hc.getManager().persist(r1);
+         hc.getManager().persist(r2);
+         hc.getManager().persist(r3);
+         hc.getManager().persist(r4);
+         hc.getTransaction().commit();
+
          System.out.println("Insertando tecnologias");
+         hc.getTransaction().begin();
+         Tecnologia tc1= new Tecnologia("Java",p1);
+         Tecnologia tc2= new Tecnologia("Phyton",p2);
+         Tecnologia tc3= new Tecnologia("C++",p3);
+         Tecnologia tc4= new Tecnologia("Java",p4);
+         hc.getManager().persist(tc1);
+         hc.getManager().persist(tc2);
+         hc.getManager().persist(tc3);
+         hc.getManager().persist(tc4);
 
 
          hc.close();
