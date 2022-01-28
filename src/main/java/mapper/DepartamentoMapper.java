@@ -16,6 +16,8 @@ public class DepartamentoMapper extends BaseMapper<Departamento, DepartamentoDTO
         departamento.setNombre(item.getNombre());
         departamento.setPresupuesto(item.getPresupuesto());
         departamento.setPresupuestoAnual(item.getPresupuestoAnual());
+        departamento.setProgramadores(item.getProgramadores());
+        departamento.setProyectos(item.getProyectos());
         return departamento;
     }
     @Override
@@ -25,6 +27,8 @@ public class DepartamentoMapper extends BaseMapper<Departamento, DepartamentoDTO
                 .nombre(item.getNombre())
                 .presupuesto(item.getPresupuesto())
                 .presupuestoAnual(item.getPresupuestoAnual())
+                .programadores(item.getProgramadores())
+                .proyectos(item.getProyectos())
                 .build();
     }
 }

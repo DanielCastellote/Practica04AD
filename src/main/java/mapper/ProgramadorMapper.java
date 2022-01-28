@@ -12,14 +12,14 @@ public class ProgramadorMapper extends BaseMapper<Programador, ProgramadorDTO>{
             programador.setId(item.getId());
         }
         programador.setNombre(item.getNombre());
-        programador.setEmail(item.getEmail());
         programador.setfAlta(item.getFAlta());
         programador.setSalario(item.getSalario());
         programador.setEmail(item.getEmail());
         programador.setContrasena(item.getContrasena());
         programador.setLenguajes(item.getLenguajes());
         programador.setCommits(item.getCommits());
-        programador.setLoginProgramador(item.getLoginProgramador());
+        programador.setProyecto(item.getProyecto());
+        programador.setDepartamento(item.getDepartamento());
         return programador;
     }
 
@@ -34,7 +34,8 @@ public class ProgramadorMapper extends BaseMapper<Programador, ProgramadorDTO>{
                 .contrasena(item.getContrasena())
                 .lenguajes(item.getLenguajes())
                 .commits(item.getCommits())
-                .loginProgramador(item.getLoginProgramador())
+                .proyecto(item.getProyecto())
+                .departamento(item.getDepartamento())
                 .build();
     }
 }

@@ -21,7 +21,6 @@ public class ProgramadorDTO {
     private Set<Tecnologia> lenguajes = new HashSet<>();
     private Set<Commit> commits = new HashSet<>();
     private Proyecto proyecto;
-    private Login loginProgramador= new Login();
     private Departamento departamento;
 
     @Override
@@ -36,7 +35,6 @@ public class ProgramadorDTO {
                 ", lenguajes=" + lenguajes +
                 ", commits=" + commits +
                 ", proyecto=" + proyecto +
-                ", loginProgramador=" + loginProgramador +
                 ", departamento=" + departamento +
                 '}';
     }

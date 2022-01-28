@@ -14,9 +14,8 @@ public class LoginMapper extends BaseMapper<Login, LoginDTO>{
             login.setId(item.getId());
         }
         login.setInstSalida(item.getInstIdentificacion());
-        login.setActivo(item.isActivo());
-        login.setProgramador(item.getProgramador());
         login.setToken(item.getToken());
+        login.setActivo(item.isActivo());
         return login;
     }
     @Override
@@ -24,9 +23,8 @@ public class LoginMapper extends BaseMapper<Login, LoginDTO>{
         return LoginDTO.builder()
                 .id(item.getId())
                 .instIdentificacion(item.getInstSalida())
-                .activo(item.isActivo())
                 .token(item.getToken())
-                .programador(item.getProgramador())
+                .activo(item.isActivo())
                 .build();
     }
 }
