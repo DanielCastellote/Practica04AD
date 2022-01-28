@@ -20,18 +20,6 @@ public class Commit {
     private Programador autor;
     private Repositorio repositorio;
 
-    @ManyToOne
-    @JoinColumn(name = "programador_id")
-    private Programador programador;
-
-    public Programador getProgramador() {
-        return programador;
-    }
-
-    public void setProgramador(Programador programador) {
-        this.programador = programador;
-    }
-
 
     public Commit(String titulo, String texto, Programador autor, Repositorio repositorio) {
         this.titulo = titulo;
@@ -43,31 +31,37 @@ public class Commit {
 
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     public long getId() {
         return id;
     }
+
     @Basic
     @Column(name = "titulo", nullable = false, length = 100)
     public String getTitulo() {
         return titulo;
     }
+
     @Basic
     @Column(name = "texto", nullable = false, length = 100)
     public String getTexto() {
         return texto;
     }
+
     @Basic
     @Column(name = "fCreacion", nullable = false, length = 100)
     public Date getfCreacion() {
         return fCreacion;
     }
+
+
     @ManyToOne
     @JoinColumn(name = "programador_id", referencedColumnName = "id", nullable = false)
     public Programador getAutor() {
         return autor;
     }
+
     @ManyToOne
     @JoinColumn(name = "repositorio_id", referencedColumnName = "id", nullable = false)
     public Repositorio getRepositorio() {
@@ -97,5 +91,15 @@ public class Commit {
 
     public void setRepositorio(Repositorio repositorio) {
         this.repositorio = repositorio;
+    }
+
+    @Override
+    public String toString() {
+        return "Commit{" +
+                "id=" + id +
+                ", titulo='" + titulo + '\'' +
+                ", texto='" + texto + '\'' +
+                ", fCreacion=" + fCreacion +
+                '}';
     }
 }

@@ -28,45 +28,38 @@ public class Issue {
         this.fCreacion= new Date(System.currentTimeMillis());
     }
 
-    @ManyToOne
-    @JoinColumn(name = "programador_id")
-    private Programador programador;
-
-    public Programador getProgramador() {
-        return programador;
-    }
-
-    public void setProgramador(Programador programador) {
-        this.programador = programador;
-    }
-
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     public long getId() {
         return id;
     }
+
     @Basic
     @Column(name = "titulo", nullable = false, length = 100)
     public String getTitulo() {
         return titulo;
     }
+
     @Basic
     @Column(name = "texto", nullable = false, length = 100)
     public String getTexto() {
         return texto;
     }
+
     @Basic
     @Column(name = "fCreacion", nullable = false, length = 100)
     public Date getfCreacion() {
         return fCreacion;
     }
 
+
     @ManyToOne
     @JoinColumn(name = "repositorio_id", referencedColumnName = "id", nullable = false)
     public Repositorio getRepositorio() {
         return repositorio;
     }
+
     @Basic
     @Column(name = "estado", nullable = false, length = 100)
     public String getEstado() {

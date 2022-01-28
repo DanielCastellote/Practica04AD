@@ -27,16 +27,19 @@ public class Tecnologia {
     public long getId() {
         return id;
     }
+
     @Basic
     @Column(name = "nombre", nullable = false, length = 100)
     public String getNombre() {
         return nombre;
     }
+
     @ManyToOne
     @JoinColumn(name = "programador_id", referencedColumnName = "id", nullable = false)
     public Programador getProgramador() {
         return programador;
     }
+
 
     public void setId(long id) {
         this.id = id;
