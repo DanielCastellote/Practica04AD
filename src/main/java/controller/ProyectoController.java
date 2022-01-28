@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class ProyectoController {
-        private static RepositorioController controller = null;
+        private static ProyectoController controller = null;
 
         private final ProyectoService proyectoService;
 
@@ -16,9 +16,9 @@ public class ProyectoController {
             this.proyectoService = proyectoService;
         }
 
-        public static RepositorioController getInstance() {
+        public static ProyectoController getInstance() {
             if (controller == null) {
-                controller = new RepositorioController(new ProyectoService(new ProyectoRepository()));
+                controller = new ProyectoController(new ProyectoService(new ProyectoRepository()));
             }
             return controller;
         }
