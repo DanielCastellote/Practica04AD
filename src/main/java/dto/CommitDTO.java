@@ -26,6 +26,8 @@ public class CommitDTO {
                 ", titulo='" + titulo + '\'' +
                 ", texto='" + texto + '\'' +
                 ", fCreacion=" + fCreacion +
+                ", autor=" + autor +
+                ", repositorio=" + repositorio +
                 '}';
     }
 }

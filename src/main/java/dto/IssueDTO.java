@@ -14,8 +14,8 @@ public class IssueDTO {
     private String titulo;
     private String texto;
     private Date fCreacion;
-    private String estado;
     private Repositorio repositorio;
+    private String estado;
 
     @Override
     public String toString() {
@@ -24,6 +24,7 @@ public class IssueDTO {
                 ", titulo='" + titulo + '\'' +
                 ", texto='" + texto + '\'' +
                 ", fCreacion=" + fCreacion +
+                ", repositorio=" + repositorio +
                 ", estado='" + estado + '\'' +
                 '}';
     }

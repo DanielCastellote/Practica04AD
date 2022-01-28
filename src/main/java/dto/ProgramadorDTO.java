@@ -1,9 +1,6 @@
 package dto;
 
-import dao.Commit;
-import dao.Issue;
-import dao.Login;
-import dao.Tecnologia;
+import dao.*;
 import lombok.Builder;
 import lombok.Data;
 
@@ -23,8 +20,9 @@ public class ProgramadorDTO {
     private String contrasena;
     private Set<Tecnologia> lenguajes = new HashSet<>();
     private Set<Commit> commits = new HashSet<>();
-    private Set<Issue> issues = new HashSet<>();
+    private Proyecto proyecto;
     private Login loginProgramador= new Login();
+    private Departamento departamento;
 
     @Override
     public String toString() {
@@ -36,9 +34,10 @@ public class ProgramadorDTO {
                 ", email='" + email + '\'' +
                 ", contrasena='" + contrasena + '\'' +
                 ", lenguajes=" + lenguajes +
-                ", commit=" + commits +
-                ", issue=" + issues +
-                ", login=" + loginProgramador +
+                ", commits=" + commits +
+                ", proyecto=" + proyecto +
+                ", loginProgramador=" + loginProgramador +
+                ", departamento=" + departamento +
                 '}';
     }
 }

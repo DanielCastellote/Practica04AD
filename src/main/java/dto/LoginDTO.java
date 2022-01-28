@@ -14,16 +14,14 @@ public class LoginDTO {
     private Timestamp instIdentificacion;
     private String token;
     private boolean activo;
-    private Programador programador;
 
     @Override
     public String toString() {
         return "LoginDTO{" +
                 "id=" + id +
                 ", instIdentificacion=" + instIdentificacion +
-                ", token=" + token +
+                ", token='" + token + '\'' +
                 ", activo=" + activo +
-                ", programador=" + programador +
                 '}';
     }
 }

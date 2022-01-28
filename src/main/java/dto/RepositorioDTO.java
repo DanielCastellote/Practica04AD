@@ -22,6 +22,8 @@ public class RepositorioDTO {
         return "RepositorioDTO{" +
                 "id=" + id +
                 ", fCreacion=" + fCreacion +
+                ", issues=" + issues +
+                ", commits=" + commits +
                 '}';
     }
 }
