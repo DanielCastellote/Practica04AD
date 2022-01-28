@@ -83,7 +83,7 @@ public class Programador {
         return lenguajes;
     }
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "programador", orphanRemoval = true, cascade = CascadeType.REMOVE)
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "autor", orphanRemoval = true, cascade = CascadeType.REMOVE)
     public Set<Commit> getCommits() {
         return commits;
     }
