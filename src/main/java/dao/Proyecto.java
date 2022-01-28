@@ -22,47 +22,57 @@ public class Proyecto {
     private Date fInicio;
     private Date fFin;
     private Set<Programador> programadores;
+    private Departamento departamento;
 
-    public Proyecto(String nombre, double presupuesto) {
+    public Proyecto(String nombre, double presupuesto, Departamento departamento) {
         this.nombre = nombre;
         this.presupuesto = presupuesto;
         this.fInicio = new Date(System.currentTimeMillis());
         this.fFin = new Date(System.currentTimeMillis());
         this.programadores = new HashSet<Programador>();
+        this.departamento = departamento;
     }
+
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name="id",nullable = false)
-    public long getId(){
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", nullable = false)
+    public long getId() {
         return id;
     }
+
     @Basic
     @Column(name = "nombre", nullable = false, length = 100)
     public String getNombre() {
         return nombre;
     }
+
     @Basic
     @Column(name = "presupuesto", nullable = false, length = 100)
     public double getPresupuesto() {
         return presupuesto;
     }
+
     @Basic
-    @Column(name = "fechaInicio", nullable = false, length = 100)
+    @Column(name = "fInicio", nullable = false, length = 100)
     public Date getfInicio() {
         return fInicio;
     }
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "programadoresProyecto", orphanRemoval = true, cascade = CascadeType.REMOVE)
+    @Basic
+    @Column(name = "fFin", nullable = false, length = 100)
+    public Date getfFin() {
+        return fFin;
+    }
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "proyecto", orphanRemoval = true, cascade = CascadeType.REMOVE)
     public Set<Programador> getProgramadores() {
         return programadores;
     }
 
-    @Basic
-    @Column(name = "fechaFin", nullable = false, length = 100)
-
-
-    public Date getfFin() {
-        return fFin;
+    @ManyToOne
+    @JoinColumn(name = "departamento_id", referencedColumnName = "id", nullable = false)
+    public Departamento getDepartamento() {
+        return departamento;
     }
 
     public void setId(long id) {
@@ -89,6 +99,9 @@ public class Proyecto {
         this.programadores = programadores;
     }
 
+    public void setDepartamento(Departamento departamento) {
+        this.departamento = departamento;
+    }
 
     @Override
     public String toString() {

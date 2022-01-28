@@ -21,29 +21,31 @@ public class Login {
     private Timestamp instSalida;
     private String token;
     private boolean activo;
-    @ManyToOne
-    @JoinColumn(name = "programador_id")
-    private Programador programador;
+
 
     @Id
     public long getId() {
         return id;
     }
+
     @Basic
     @Column(name = "ultimo_acceso", nullable = false)
     public Timestamp getInstSalida() {
         return instSalida;
     }
+
     @Basic //TODO MIRAR EN LOGIN DAO DE JOSE LUIS
     @Column(name = "token", nullable = false, length = 100)
     public String getToken() {
         return token;
     }
+
     @Basic
-    @Column(name = "Actividad", nullable = false, length = 100)
+    @Column(name = "activo", nullable = false, length = 100)
     public boolean isActivo() {
         return activo;
     }
+
 
     public void setId(long id) {
         this.id = id;
@@ -59,5 +61,15 @@ public class Login {
 
     public void setActivo(boolean activo) {
         this.activo = activo;
+    }
+
+    @Override
+    public String toString() {
+        return "Login{" +
+                "id=" + id +
+                ", instSalida=" + instSalida +
+                ", token='" + token + '\'' +
+                ", activo=" + activo +
+                '}';
     }
 }

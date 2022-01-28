@@ -26,14 +26,14 @@ public class Repositorio {
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     public long getId() {
         return id;
     }
 
     @Basic
-    @Column(name = "nombre", nullable = false, length = 100)
+    @Column(name = "fCreacion", nullable = false, length = 100)
     public Date getfCreacion() {
         return fCreacion;
     }

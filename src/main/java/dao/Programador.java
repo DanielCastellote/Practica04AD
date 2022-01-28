@@ -26,21 +26,10 @@ public class Programador {
     private Set<Tecnologia> lenguajes;
     private Set<Commit> commits;
     private Proyecto proyecto;
-    private Login loginProgramador;
+    private Departamento departamento;
 
-    @ManyToOne
-    @JoinColumn(name = "programadores_proyecto_id")
-    private Proyecto programadoresProyecto;
 
-    public Proyecto getProgramadoresProyecto() {
-        return programadoresProyecto;
-    }
-
-    public void setProgramadoresProyecto(Proyecto programadoresProyecto) {
-        this.programadoresProyecto = programadoresProyecto;
-    }
-
-    public Programador(String nombre, double salario, String email, String contrasena, Proyecto proyecto) {
+    public Programador(String nombre, double salario, String email, String contrasena, Proyecto proyecto, Departamento departamento) {
         this.nombre = nombre;
         this.fAlta = new Date(System.currentTimeMillis());
         this.salario = salario;
@@ -48,13 +37,13 @@ public class Programador {
         this.contrasena = Cifrador.getInstance().SHA256(contrasena);
         this.lenguajes = new HashSet<Tecnologia>();
         this.commits = new HashSet<Commit>();
-        this.programadoresProyecto= new Proyecto();
-        this.loginProgramador = new Login();
+        this.proyecto = proyecto;
+        this.departamento = departamento;
+
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public long getId() {
         return id;
     }
@@ -66,13 +55,13 @@ public class Programador {
     }
 
     @Basic
-    @Column(name = "fAlta", nullable = false)
+    @Column(name = "fAlta", nullable = false, length = 100)
     public Date getfAlta() {
         return fAlta;
     }
 
     @Basic
-    @Column(name = "salario", nullable = false)
+    @Column(name = "salario", nullable = false, length = 100)
     public double getSalario() {
         return salario;
     }
@@ -98,6 +87,7 @@ public class Programador {
     public Set<Commit> getCommits() {
         return commits;
     }
+
     @ManyToOne
     @JoinColumn(name = "proyecto_id", referencedColumnName = "id", nullable = false)
     public Proyecto getProyecto() {
@@ -105,10 +95,10 @@ public class Programador {
     }
 
     @ManyToOne
-    public Login getLoginProgramador() {
-        return loginProgramador;
+    @JoinColumn(name = "departamento_id", referencedColumnName = "id", nullable = false)
+    public Departamento getDepartamento() {
+        return departamento;
     }
-
 
     public void setId(long id) {
         this.id = id;
@@ -146,8 +136,8 @@ public class Programador {
         this.proyecto = proyecto;
     }
 
-    public void setLoginProgramador(Login loginProgramador) {
-        this.loginProgramador = loginProgramador;
+    public void setDepartamento(Departamento departamento) {
+        this.departamento = departamento;
     }
 
     @Override
@@ -159,9 +149,6 @@ public class Programador {
                 ", salario=" + salario +
                 ", email='" + email + '\'' +
                 ", contrasena='" + contrasena + '\'' +
-                ", lenguajes=" + lenguajes +
-                ", commits=" + commits +
-                ", loginProgramador=" + loginProgramador +
                 '}';
     }
 }

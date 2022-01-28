@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @NoArgsConstructor
@@ -16,15 +18,20 @@ public class Departamento {
     private String nombre;
     private double presupuesto;
     private double presupuestoAnual;
+    private Set<Programador> programadores;
+    private Set<Proyecto> proyectos;
 
 
     public Departamento(String nombre, double presupuesto, double presupuestoAnual) {
         this.nombre = nombre;
         this.presupuesto = presupuesto;
         this.presupuestoAnual = presupuestoAnual;
+        this.programadores= new HashSet<>();
+        this.proyectos= new HashSet<>();
     }
+
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     public long getId() {
         return id;
@@ -48,6 +55,14 @@ public class Departamento {
         return presupuestoAnual;
     }
 
+    @OneToMany(fetch = FetchType.EAGER,mappedBy = "departamento",orphanRemoval = true,cascade = CascadeType.REMOVE)
+    public Set<Programador> getProgramadores() {
+        return programadores;
+    }
+    @OneToMany(fetch = FetchType.EAGER,mappedBy = "departamento",orphanRemoval = true,cascade = CascadeType.REMOVE)
+    public Set<Proyecto> getProyectos() {
+        return proyectos;
+    }
 
     public void setId(long id) {
         this.id = id;
@@ -63,6 +78,14 @@ public class Departamento {
 
     public void setPresupuestoAnual(double presupuestoAnual) {
         this.presupuestoAnual = presupuestoAnual;
+    }
+
+    public void setProgramadores(Set<Programador> programadores) {
+        this.programadores = programadores;
+    }
+
+    public void setProyectos(Set<Proyecto> proyectos) {
+        this.proyectos = proyectos;
     }
 
     @Override
