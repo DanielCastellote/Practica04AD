@@ -1,17 +1,10 @@
 package service;
 
 import dao.Departamento;
-import dao.Programador;
 import dto.DepartamentoDTO;
-import dto.ProgramadorDTO;
 import mapper.DepartamentoMapper;
-import mapper.ProgramadorMapper;
 import repository.DepartamentoRepository;
-import repository.ProgramadorRepository;
-import utils.Cifrador;
-
 import java.sql.SQLException;
-import java.util.Date;
 import java.util.List;
 
 public class DepartamentoService extends BaseService<Departamento, Long, DepartamentoRepository> {

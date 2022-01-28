@@ -1,17 +1,10 @@
 package service;
 
 import dao.Issue;
-import dao.Programador;
 import dto.IssueDTO;
-import dto.ProgramadorDTO;
 import mapper.IssueMapper;
-import mapper.ProgramadorMapper;
 import repository.IssueRepository;
-import repository.ProgramadorRepository;
-import utils.Cifrador;
-
 import java.sql.SQLException;
-import java.util.Date;
 import java.util.List;
 
 public class IssueService extends BaseService<Issue, Long, IssueRepository>  {
