@@ -1,14 +1,9 @@
 package service;
 
-import dao.Issue;
 import dao.Login;
-import dto.IssueDTO;
 import dto.LoginDTO;
-import mapper.IssueMapper;
 import mapper.LoginMapper;
-import repository.IssueRepository;
 import repository.LoginRepository;
-
 import java.sql.SQLException;
 import java.util.List;
 
