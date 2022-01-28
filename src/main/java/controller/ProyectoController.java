@@ -1,17 +1,14 @@
 package controller;
 
-import dto.ProgramadorDTO;
 import dto.ProyectoDTO;
-import repository.ProgramadorRepository;
 import repository.ProyectoRepository;
-import service.ProgramadorService;
 import service.ProyectoService;
 
 import java.sql.SQLException;
 import java.util.List;
 
 public class ProyectoController {
-        private static controller.ProyectoController controller = null;
+        private static RepositorioController controller = null;
 
         private final ProyectoService proyectoService;
 
@@ -19,16 +16,16 @@ public class ProyectoController {
             this.proyectoService = proyectoService;
         }
 
-        public static controller.ProyectoController getInstance() {
+        public static RepositorioController getInstance() {
             if (controller == null) {
-                controller = new controller.ProyectoController(new ProyectoService(new ProyectoRepository()));
+                controller = new RepositorioController(new ProyectoService(new ProyectoRepository()));
             }
             return controller;
         }
 
         public List<ProyectoDTO> getAllProyectos() {
             try {
-                return proyectoService.getAllProyectos();
+                return proyectoService.getAllProyecto();
             } catch (SQLException e) {
                 System.err.println("Error ProyectoController en getAllProyecto: " + e.getMessage());
                 return null;
@@ -55,14 +52,14 @@ public class ProyectoController {
 
         public ProyectoDTO updateProyecto(ProyectoDTO proyectoDTO) {
             try {
-                return proyectoService.updateProyecto(ProyectoDTO);
+                return proyectoService.updateProyecto(proyectoDTO);
             } catch (SQLException e) {
                 System.err.println("Error ProyectoController en updateProyecto " + e.getMessage());
                 return null;
             }
         }
 
-        public ProyectoDTO deleteProyecto(ProgramadorDTO ProyectoDTO) {
+        public ProyectoDTO deleteProyecto(ProyectoDTO proyectoDTO) {
             try {
                 return proyectoService.deleteProyecto(proyectoDTO);
             } catch (SQLException e) {
