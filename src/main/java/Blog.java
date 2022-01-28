@@ -30,34 +30,6 @@ public class Blog {
 
          HibernateController hc = HibernateController.getInstance();
          hc.open();
-
-         System.out.println("Insertando proyectos para trabajar");
-         hc.getTransaction().begin();
-         Proyecto proy1 = new Proyecto("Gestion Polideportivo",250000);
-         Proyecto proy2 = new Proyecto("Gestion Peluqueria",125000);
-         Proyecto proy3 = new Proyecto("Gestion Restaurante",275000);
-         Proyecto proy4 = new Proyecto("Gestion Baños",50000);
-         hc.getManager().persist(proy1);
-         hc.getManager().persist(proy2);
-         hc.getManager().persist(proy3);
-         hc.getManager().persist(proy4);
-         hc.getTransaction().commit();
-
-         //Programadores
-         System.out.println("Insertando programadores de ejemplo");
-         hc.getTransaction().begin();
-
-         Programador p1 = new Programador("Javier",1200,"javier@gmail.com","1234",proy1);
-         Programador p2 = new Programador("Daniel",1200,"daniel@gmail.com","5678",proy2);
-         Programador p3 = new Programador("Jose Luis",2800,"joseluis@gmail.com","12345678",proy3);
-         Programador p4 = new Programador("Javier Palacios",2800,"javipalacios@gmail.com","87654321",proy3);
-
-         hc.getManager().persist(p1);
-         hc.getManager().persist(p2);
-         hc.getManager().persist(p3);
-         hc.getManager().persist(p4);
-         hc.getTransaction().commit();
-
          System.out.println("Insertando departamentos de ejemplo");
          hc.getTransaction().begin();
          Departamento d1 = new Departamento("Recursos Humanos",20500,125000);
@@ -70,6 +42,37 @@ public class Blog {
          hc.getManager().persist(d3);
          hc.getManager().persist(d4);
          hc.getTransaction().commit();
+
+         System.out.println("Insertando proyectos para trabajar");
+         hc.getTransaction().begin();
+         Proyecto proy1 = new Proyecto("Gestion Polideportivo",250000,d1);
+         Proyecto proy2 = new Proyecto("Gestion Peluqueria",125000,d2);
+         Proyecto proy3 = new Proyecto("Gestion Restaurante",275000,d3);
+         Proyecto proy4 = new Proyecto("Gestion Baños",50000,d4);
+         hc.getManager().persist(proy1);
+         hc.getManager().persist(proy2);
+         hc.getManager().persist(proy3);
+         hc.getManager().persist(proy4);
+         hc.getTransaction().commit();
+
+         //Programadores
+         System.out.println("Insertando programadores de ejemplo");
+         hc.getTransaction().begin();
+
+         Programador p1 = new Programador("Javier",1200,"javier@gmail.com","1234",proy1,d1);
+         Programador p2 = new Programador("Daniel",1200,"daniel@gmail.com","5678",proy2,d2);
+         Programador p3 = new Programador("Jose Luis",2800,"joseluis@gmail.com","12345678",proy3,d3);
+         Programador p4 = new Programador("Javier Palacios",2800,"javipalacios@gmail.com","87654321",proy3,d4);
+         Programador p5 = new Programador("Carmen FOL",2800,"carmenfol@gmail.com","54321678",proy4,d4);
+
+         hc.getManager().persist(p1);
+         hc.getManager().persist(p2);
+         hc.getManager().persist(p3);
+         hc.getManager().persist(p4);
+         hc.getManager().persist(p5);
+         hc.getTransaction().commit();
+
+
 
          System.out.println("Insertando repositorios");
          hc.getTransaction().begin();
@@ -93,12 +96,16 @@ public class Blog {
          Tecnologia tc6= new Tecnologia("Vue",p4);
          Tecnologia tc7= new Tecnologia("Kotlin",p4);
          Tecnologia tc8= new Tecnologia("Php",p4);
+         Tecnologia tc9= new Tecnologia("Office",p5);
          hc.getManager().persist(tc1);
          hc.getManager().persist(tc2);
          hc.getManager().persist(tc3);
          hc.getManager().persist(tc4);
          hc.getManager().persist(tc5);
          hc.getManager().persist(tc6);
+         hc.getManager().persist(tc7);
+         hc.getManager().persist(tc8);
+         hc.getManager().persist(tc9);
          hc.getTransaction().commit();
 
          System.out.println("Insertando Commits");
