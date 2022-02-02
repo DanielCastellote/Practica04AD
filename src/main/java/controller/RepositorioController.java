@@ -1,6 +1,8 @@
 package controller;
 
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import dto.ProyectoDTO;
 import dto.RepositorioDTO;
 import repository.ProyectoRepository;
@@ -33,6 +35,25 @@ public class RepositorioController {
         } catch (SQLException e) {
             System.err.println("Error RepositorioController en getAllRepositorio: " + e.getMessage());
             return null;
+        }
+    }
+    public String getAllRepositorioJSON() {
+        try {
+            final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
+            return prettyGson.toJson(repositorioService.getAllRepositorio());
+        } catch (SQLException e) {
+            System.err.println("Error RepositorioController en getAllRepositorio: " + e.getMessage());
+            return "Error RepositorioController en getAllRepositorio: " + e.getMessage();
+        }
+    }
+    public String getRepositorioByIdJSON(Long id) {
+        try {
+            // Vamos a devolver el JSON de las categorías
+            final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
+            return prettyGson.toJson(repositorioService.getRepositorioById(id));
+        } catch (SQLException e) {
+            System.err.println("Error RepositorioController en getRepositorioById: " + e.getMessage());
+            return "Error RepositorioController en getRepositorioById: " + e.getMessage();
         }
     }
 
