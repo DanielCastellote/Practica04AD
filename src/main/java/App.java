@@ -14,16 +14,26 @@ public class App {
 
         if (properties.readProperty("database.init").equals("true"))
             data.initDataBase();
+
             data.Programadores();
-            data.Departamentos();
+
             data.Proyectos();
+
             //blog.Logins();
+
             data.Repositorios();
+
             data.Tecnologias();
+
             data.Issues();
+            data.IssuesJson();
+
+            data.Departamentos();
+            data.DepartamentosJson();
+
             data.Commits();
             data.CommitsJson();
-            data.DepartamentosJson();
+
 
     }
 }

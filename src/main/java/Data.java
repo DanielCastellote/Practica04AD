@@ -171,38 +171,42 @@ public class Data {
 
      public void Commits(){
          System.out.println("INICIO DE COMMITS")  ;
-         CommitController programadorController = CommitController.getInstance();
-         System.out.println("GET Todos los COMMITS");
-         List<CommitDTO> listaCommits = programadorController.getAllCommit();
-         System.out.println(listaCommits);
+         CommitController commitController = CommitController.getInstance();
+         List<CommitDTO> listaCommits = commitController.getAllCommit();
+         System.out.println("GET Todos los COMMITS" +"\n"+listaCommits);
      }
      public void CommitsJson(){
             CommitController commitController = CommitController.getInstance();
-            System.out.println("GET Todos los COMMITS por JSON");
-            System.out.println(commitController.getAllCommitsJSON());
-            //commitController.getCommitByIdJSON(30L);
+            System.out.println("GET Todos los COMMITS por JSON" +"\n"+ commitController.getAllCommitsJSON());
+            System.out.println("GET COMMIT por ID (=30) por JSON"+"\n"+ commitController.getCommitByIdJSON(30L));
+            System.out.println("GET COMMIT por ID (=34) por JSON"+"\n"+ commitController.getCommitByIdJSON(34L));
      }
 
      public void Departamentos(){
          System.out.println("INICIO DE DEPARTAMENTOS")  ;
-         DepartamentoController programadorController = DepartamentoController.getInstance();
-         System.out.println("GET Todos los departamentos");
-         List<DepartamentoDTO> listaDepartamentos = programadorController.getAllDepartamento();
-         System.out.println(listaDepartamentos);
+         DepartamentoController departamentoController = DepartamentoController.getInstance();
+         List<DepartamentoDTO> listaDepartamentos = departamentoController.getAllDepartamento();
+         System.out.println("GET Todos los DEPARTAMENTOS" +"\n"+listaDepartamentos);
      }
      public void DepartamentosJson(){
-            System.out.println("GET Todos los DEPARTAMENTOS por JSON");
-            DepartamentoController departamentoController = DepartamentoController.getInstance();
-            System.out.println(departamentoController.getAllDepartamentoJSON());
+         DepartamentoController departamentoController = DepartamentoController.getInstance();
+         System.out.println("GET Todos los DEPARTAMENTOS por JSON" +"\n"+ departamentoController.getAllDepartamentoJSON());
+         System.out.println("GET DEPARTAMENTOS por ID (=1) por JSON"+"\n"+ departamentoController.getDepartamentoByIdJSON(1L));
+         System.out.println("GET DEPARTAMENTOS por ID (=4) por JSON"+"\n"+ departamentoController.getDepartamentoByIdJSON(4L));
      }
 
-     public void Issues(){
-         System.out.println("INICIO DE PROGRAMADORES")  ;
+    public void Issues(){
+        System.out.println("INICIO DE ISSUES")  ;
         IssueController issueController = IssueController.getInstance();
-         System.out.println("GET Todos los programadores");
-         List<IssueDTO> listaIssues = issueController.getAllIssue();
-         System.out.println(listaIssues);
-     }
+        List<IssueDTO> listaIssue = issueController.getAllIssue();
+        System.out.println("GET Todos los ISSUES" +"\n"+listaIssue);
+    }
+    public void IssuesJson(){
+        IssueController issueController = IssueController.getInstance();
+        System.out.println("GET Todos los ISSUE por JSON" +"\n"+ issueController.getAllIssueJSON());
+        System.out.println("GET ISSUE por ID (=40) por JSON"+"\n"+ issueController.getIssueByIdJSON(40L));
+        System.out.println("GET ISSUE por ID (=36) por JSON"+"\n"+ issueController.getIssueByIdJSON(36L));
+    }
 /*
      public void Logins(){
          System.out.println("INICIO DE LOGINS")  ;
