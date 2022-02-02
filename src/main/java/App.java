@@ -14,26 +14,30 @@ public class App {
 
         if (properties.readProperty("database.init").equals("true"))
             data.initDataBase();
-
-            data.Programadores();
-
-            data.Proyectos();
-
-            //blog.Logins();
-
-            data.Repositorios();
-
-            data.Tecnologias();
-
-            data.Issues();
-            data.IssuesJson();
-
-            data.Departamentos();
-            data.DepartamentosJson();
-
-            data.Commits();
-            data.CommitsJson();
+            runData();
 
 
+    }
+
+    public static void runData(){
+        Data data = Data.getInstance();
+        data.Programadores();
+
+        data.Proyectos();
+
+        //blog.Logins();
+
+        data.Repositorios();
+
+        data.Tecnologias();
+
+        data.Issues();
+        data.IssuesJson();
+
+        data.Departamentos();
+        data.DepartamentosJson();
+
+        data.Commits();
+        data.CommitsJson();
     }
 }
