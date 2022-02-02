@@ -10,7 +10,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "issue")
-@NamedQuery(name = "Issue.findAll", query = "SELECT c FROM Commit c")
+@NamedQuery(name = "Issue.findAll", query = "SELECT c FROM Issue c")
 public class Issue {
 
     private long id;
@@ -29,7 +29,7 @@ public class Issue {
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     public long getId() {
         return id;
