@@ -1,5 +1,7 @@
 package controller;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import dto.DepartamentoDTO;
 import repository.DepartamentoRepository;
 import service.DepartamentoService;
@@ -29,6 +31,15 @@ public class DepartamentoController {
         } catch (SQLException e) {
             System.err.println("Error DepartamentoController en getAllDepartamento: " + e.getMessage());
             return null;
+        }
+    }
+    public String getAllDepartamentoJSON() {
+        try {
+            final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
+            return prettyGson.toJson(departamentoService.getAllDepartamento());
+        } catch (SQLException e) {
+            System.err.println("Error DepartamentoController en getAll: " + e.getMessage());
+            return "Error DepartamentoController en getAll: " + e.getMessage();
         }
     }
 

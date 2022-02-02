@@ -14,8 +14,6 @@ public class RepositorioMapper extends BaseMapper<Repositorio, RepositorioDTO>{
             repositorio.setId(item.getId());
         }
         repositorio.setfCreacion(item.getFCreacion());
-        repositorio.setIssues(item.getIssues());
-        repositorio.setCommits(item.getCommits());
         return repositorio;
     }
     @Override
@@ -23,8 +21,6 @@ public class RepositorioMapper extends BaseMapper<Repositorio, RepositorioDTO>{
         return RepositorioDTO.builder()
                 .id(item.getId())
                 .fCreacion(item.getfCreacion())
-                .issues(item.getIssues())
-                .commits(item.getCommits())
                 .build();
     }
 }

@@ -23,6 +23,7 @@ public class App {
             data.Issues();
             data.Commits();
             data.CommitsJson();
+            data.DepartamentosJson();
 
     }
 }

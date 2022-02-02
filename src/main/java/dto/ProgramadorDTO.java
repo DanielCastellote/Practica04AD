@@ -18,10 +18,7 @@ public class ProgramadorDTO {
     private double salario;
     private String email;
     private String contrasena;
-    private Set<Tecnologia> lenguajes = new HashSet<>();
-    private Set<Commit> commits = new HashSet<>();
-    private Proyecto proyecto;
-    private Departamento departamento;
+
 
     @Override
     public String toString() {
@@ -32,10 +29,6 @@ public class ProgramadorDTO {
                 ", salario=" + salario +
                 ", email='" + email + '\'' +
                 ", contrasena='" + contrasena + '\'' +
-                ", lenguajes=" + lenguajes +
-                ", commits=" + commits +
-                ", proyecto=" + proyecto +
-                ", departamento=" + departamento +
                 '}';
     }
 }

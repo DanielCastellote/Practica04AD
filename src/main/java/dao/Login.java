@@ -34,7 +34,7 @@ public class Login {
         return instSalida;
     }
 
-    @Basic //TODO MIRAR EN LOGIN DAO DE JOSE LUIS
+    @Basic
     @Column(name = "token", nullable = false, length = 100)
     public String getToken() {
         return token;

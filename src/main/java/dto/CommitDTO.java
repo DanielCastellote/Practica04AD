@@ -18,8 +18,6 @@ public class CommitDTO {
     private String titulo;
     private String texto;
     private Date fCreacion;
-    //private Programador autor;
-    //private Repositorio repositorio;
 
     @Override
     public String toString() {

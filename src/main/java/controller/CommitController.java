@@ -36,7 +36,6 @@ public class CommitController {
 
     public String getAllCommitsJSON() {
         try {
-            // Vamos a devolver el JSON de los commits
             final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
             return prettyGson.toJson(commitService.getAllCommit());
         } catch (SQLException e) {

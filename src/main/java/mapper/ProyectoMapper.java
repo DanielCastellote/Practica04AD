@@ -17,8 +17,7 @@ public class ProyectoMapper extends BaseMapper<Proyecto, ProyectoDTO> {
         proyecto.setPresupuesto(item.getPresupuesto());
         proyecto.setfInicio(item.getFInicio());
         proyecto.setfFin(item.getFFin());
-        proyecto.setProgramadores(item.getProgramadores());
-        proyecto.setDepartamento(item.getDepartamento());
+
         return proyecto;
     }
     @Override
@@ -29,8 +28,6 @@ public class ProyectoMapper extends BaseMapper<Proyecto, ProyectoDTO> {
                 .presupuesto(item.getPresupuesto())
                 .fInicio(item.getfInicio())
                 .fFin(item.getfFin())
-                .programadores(item.getProgramadores())
-                .departamento(item.getDepartamento())
                 .build();
     }
 }

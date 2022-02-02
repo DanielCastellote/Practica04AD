@@ -13,7 +13,6 @@ public class TecnologiaMapper extends BaseMapper<Tecnologia, TecnologiaDTO> {
             tecnologia.setId(item.getId());
         }
         tecnologia.setNombre(item.getNombre());
-        tecnologia.setProgramador(item.getProgramador());
         return tecnologia;
     }
 
@@ -22,7 +21,6 @@ public class TecnologiaMapper extends BaseMapper<Tecnologia, TecnologiaDTO> {
         return TecnologiaDTO.builder()
                 .id(item.getId())
                 .nombre(item.getNombre())
-                .programador(item.getProgramador())
                 .build();
     }
 }

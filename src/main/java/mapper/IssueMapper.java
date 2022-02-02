@@ -16,7 +16,6 @@ public class IssueMapper extends BaseMapper<Issue, IssueDTO>{
         issue.setTitulo(item.getTitulo());
         issue.setTexto(item.getTexto());
         issue.setfCreacion(item.getFCreacion());
-        issue.setRepositorio(item.getRepositorio());
         issue.setEstado(item.getEstado());
         return issue;
     }
@@ -27,7 +26,6 @@ public class IssueMapper extends BaseMapper<Issue, IssueDTO>{
                 .titulo(item.getTitulo())
                 .texto(item.getTexto())
                 .fCreacion(item.getfCreacion())
-                .repositorio(item.getRepositorio())
                 .estado(item.getEstado())
                 .build();
     }

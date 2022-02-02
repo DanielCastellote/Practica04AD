@@ -190,6 +190,11 @@ public class Data {
          List<DepartamentoDTO> listaDepartamentos = programadorController.getAllDepartamento();
          System.out.println(listaDepartamentos);
      }
+     public void DepartamentosJson(){
+            System.out.println("GET Todos los DEPARTAMENTOS por JSON");
+            DepartamentoController departamentoController = DepartamentoController.getInstance();
+            System.out.println(departamentoController.getAllDepartamentoJSON());
+     }
 
      public void Issues(){
          System.out.println("INICIO DE PROGRAMADORES")  ;

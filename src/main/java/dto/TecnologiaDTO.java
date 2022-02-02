@@ -10,7 +10,6 @@ public class TecnologiaDTO {
 
     private Long id;
     private String nombre;
-    private Programador programador;
 
     @Override
     public String toString() {

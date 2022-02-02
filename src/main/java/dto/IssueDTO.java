@@ -14,7 +14,6 @@ public class IssueDTO {
     private String titulo;
     private String texto;
     private Date fCreacion;
-    private Repositorio repositorio;
     private String estado;
 
     @Override

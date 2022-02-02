@@ -16,8 +16,6 @@ public class DepartamentoDTO {
     private String nombre;
     private double presupuesto;
     private double presupuestoAnual;
-    private Set<Programador> programadores = new HashSet<>();
-    private Set<Proyecto> proyectos = new HashSet<>();
 
     @Override
     public String toString() {
@@ -26,7 +24,6 @@ public class DepartamentoDTO {
                 ", nombre='" + nombre + '\'' +
                 ", presupuesto=" + presupuesto +
                 ", presupuestoAnual=" + presupuestoAnual +
-                ", proyectos=" + proyectos +
                 '}';
     }
 }
