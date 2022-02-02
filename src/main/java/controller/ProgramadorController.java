@@ -1,5 +1,7 @@
 package controller;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import dto.ProgramadorDTO;
 import repository.ProgramadorRepository;
 import service.ProgramadorService;
@@ -29,6 +31,24 @@ public class ProgramadorController {
         } catch (SQLException e) {
             System.err.println("Error ProgramadorController en getAllProgramador: " + e.getMessage());
             return null;
+        }
+    }
+    public String getAllProgramadorJSON() {
+        try {
+            final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
+            return prettyGson.toJson(programadorService.getAllProgramador());
+        } catch (SQLException e) {
+            System.err.println("Error ProgramadorController en getAllProgramador: " + e.getMessage());
+            return "Error ProgramadorController en getAllProgramador: " + e.getMessage();
+        }
+    }
+    public String getProgramadorByIdJSON(Long id) {
+        try {
+            final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
+            return prettyGson.toJson(programadorService.getProgramadorById(id));
+        } catch (SQLException e) {
+            System.err.println("Error ProgramadorController en getProgramadorById: " + e.getMessage());
+            return "Error ProgramadorController en getProgramadorById: " + e.getMessage();
         }
     }
 
