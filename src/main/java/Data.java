@@ -7,18 +7,17 @@ import dao.*;
 import dto.*;
 import manager.HibernateController;
 
-import java.util.Date;
 import java.util.List;
 
-public class Blog {
-        private static Blog instance;
+public class Data {
+        private static Data instance;
 
-        private Blog() {
+        private Data() {
         }
 
-        public static Blog getInstance() {
+        public static Data getInstance() {
             if (instance == null) {
-                instance = new Blog();
+                instance = new Data();
             }
             return instance;
         }
@@ -165,8 +164,8 @@ public class Blog {
          MongoClient mongoClient = MongoClients.create(connectionString);
 
          // Obtenemos la base de datos que necesitamos
-         MongoDatabase blogDB = mongoClient.getDatabase("blog");
-         blogDB.drop(); // Si queremos borrar toda la base de datos
+         MongoDatabase dataDJ = mongoClient.getDatabase("DataDJ");
+         dataDJ.drop(); // Si queremos borrar toda la base de datos
      }
 
      public void Commits(){
@@ -192,14 +191,16 @@ public class Blog {
          List<IssueDTO> listaIssues = issueController.getAllIssue();
          System.out.println(listaIssues);
      }
-
+/*
      public void Logins(){
          System.out.println("INICIO DE LOGINS")  ;
          LoginController loginController = LoginController.getInstance();
          System.out.println("GET Todos los programadores");
-         List<LoginDTO> listaLogin = loginController.getAllLogin();
+         List<LoginDTO> listaLogin = loginRepository
          System.out.println(listaLogin);
      }
+
+ */
 
      public void Proyectos(){
          System.out.println("INICIO DE PROYECTOS")  ;

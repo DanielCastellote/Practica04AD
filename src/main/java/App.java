@@ -10,18 +10,18 @@ public class App {
                 properties.readProperty("app.curso")+" creada por "+
                 properties.readProperty("app.creadores"));
 
-        Blog blog = Blog.getInstance();
+        Data data = Data.getInstance();
 
         if (properties.readProperty("database.init").equals("true"))
-            blog.initDataBase();
-            blog.Programadores();
-            blog.Departamentos();
-            blog.Proyectos();
-            blog.Logins();
-            blog.Repositorios();
-            blog.Tecnologias();
-            blog.Issues();
-            blog.Commits();
+            data.initDataBase();
+            data.Programadores();
+            data.Departamentos();
+            data.Proyectos();
+            //blog.Logins();
+            data.Repositorios();
+            data.Tecnologias();
+            data.Issues();
+            data.Commits();
 
     }
 }
