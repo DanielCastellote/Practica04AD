@@ -1,5 +1,7 @@
 package controller;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import dto.IssueDTO;
 import dto.ProgramadorDTO;
 import repository.IssueRepository;
@@ -34,6 +36,24 @@ public class IssueController {
         } catch (SQLException e) {
             System.err.println("Error IssueController en getAllIssue: " + e.getMessage());
             return null;
+        }
+    }
+    public String getAllIssueJSON() {
+        try {
+            final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
+            return prettyGson.toJson(issueService.getAllIssue());
+        } catch (SQLException e) {
+            System.err.println("Error IssueController en getAllIssue: " + e.getMessage());
+            return "Error IssueController en getAllIssue: " + e.getMessage();
+        }
+    }
+    public String getIssueByIdJSON(Long id) {
+        try {
+            final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
+            return prettyGson.toJson(issueService.getIssueById(id));
+        } catch (SQLException e) {
+            System.err.println("Error IssueController en getIssueById: " + e.getMessage());
+            return "Error IssueController en getIssueById: " + e.getMessage();
         }
     }
 
