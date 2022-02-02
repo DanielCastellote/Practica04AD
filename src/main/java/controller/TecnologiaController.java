@@ -1,5 +1,7 @@
 package controller;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import dto.LoginDTO;
 import dto.TecnologiaDTO;
 import repository.LoginRepository;
@@ -32,8 +34,26 @@ public class TecnologiaController {
         try {
             return tecnologiaService.getAllTecnologias();
         } catch (SQLException e) {
-            System.err.println("Error LoginController en getAllLogin: " + e.getMessage());
+            System.err.println("Error TecnologiaController en getAllTecnologia: " + e.getMessage());
             return null;
+        }
+    }
+    public String getAllTecnologiaJSON() {
+        try {
+            final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
+            return prettyGson.toJson(tecnologiaService.getAllTecnologias());
+        } catch (SQLException e) {
+            System.err.println("Error TecnologiaController en getAllTecnologia: " + e.getMessage());
+            return "Error TecnologiaController en getAllTecnologia: " + e.getMessage();
+        }
+    }
+    public String getTecnologiaByIdJSON(Long id) {
+        try {
+            final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
+            return prettyGson.toJson(tecnologiaService.getTecnologiaById(id));
+        } catch (SQLException e) {
+            System.err.println("Error TecnologiaController en getTecnologiaById: " + e.getMessage());
+            return "Error TecnologiaController en getTecnologiaById: " + e.getMessage();
         }
     }
 
