@@ -7,6 +7,7 @@ import java.util.List;
 
 @RequiredArgsConstructor // Requerimos un constructor con al menos las propiedades finales
 public abstract class BaseService<T, ID, R extends CrudRepository<T, ID>> {
+
     protected final R repository;
 
     // Operaciones CRUD

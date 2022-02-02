@@ -89,5 +89,17 @@ public class ProgramadorRepository implements CrudRepository<Programador,Long> {
         }
     }
 
+    public Programador getByEmail(String email) throws SQLException {
+        HibernateController hc = HibernateController.getInstance();
+        hc.open();
+        Programador programador = hc.getManager().createNamedQuery("Programador.getByMail", Programador.class)
+                .setParameter("email", email)
+                .getSingleResult();
+        hc.close();
+        if (programador != null)
+            return programador;
+        throw new SQLException("Error ProgramadorRepository no existe programador con Email: " + email);
+    }
+
 
 }

@@ -46,5 +46,9 @@ public class ProgramadorService extends BaseService<Programador, Long, Programad
         return mapper.toDTO(prog);
     }
 
+    public Programador getProgramadorByMail(String email) throws SQLException {
+        return repository.getByEmail(email);
+    }
+
 
 }

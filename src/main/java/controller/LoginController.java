@@ -6,6 +6,7 @@ import service.LoginService;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Optional;
 
 public class LoginController {
 
@@ -13,9 +14,8 @@ public class LoginController {
 
     private final LoginService loginService;
 
-
-    private LoginController(LoginService loginService) {
-        this.loginService = loginService;
+    private LoginController(LoginService userService) {
+        this.loginService = userService;
     }
 
     public static LoginController getInstance() {
@@ -25,48 +25,27 @@ public class LoginController {
         return controller;
     }
 
-    public List<LoginDTO> getAllLogin() {
+    public Optional<LoginDTO> login(String userMail, String userPassword) {
         try {
-            return loginService.getAllLogin();
+            LoginDTO login = loginService.login(userMail, userPassword);
+            if (login != null) {
+                return Optional.of(login);
+            }
         } catch (SQLException e) {
-            System.err.println("Error LoginController en getAllLogin: " + e.getMessage());
-            return null;
+            Optional.empty();
         }
+        return  Optional.empty();
     }
 
-    public LoginDTO getLoginById(Long id) {
+    public boolean logout(Long userId) {
         try {
-            return loginService.getLoginById(id);
+            if (loginService.logout(userId))
+                return true;
+            else
+                return false;
         } catch (SQLException e) {
-            System.err.println("Error LoginController en getLoginById " + e.getMessage());
-            return null;
-        }
-    }
-
-    public LoginDTO postLogin(LoginDTO loginDTO) {
-        try {
-            return loginService.postLogin(loginDTO);
-        } catch (SQLException e) {
-            System.err.println("Error LoginController en postLogin " + e.getMessage());
-            return null;
-        }
-    }
-
-    public LoginDTO updateLogin(LoginDTO loginDTO) {
-        try {
-            return loginService.updateLogin(loginDTO);
-        } catch (SQLException e) {
-            System.err.println("Error LoginController en updateLogin " + e.getMessage());
-            return null;
-        }
-    }
-
-    public LoginDTO deleteLogin(LoginDTO loginDTO) {
-        try {
-            return loginService.deleteLogin(loginDTO);
-        } catch (SQLException e) {
-            System.err.println("Error LoginController en deleteLogin " + e.getMessage());
-            return null;
+            System.err.println("Error Login Controller Logout: " + e.getMessage());
+            return false;
         }
     }
 }

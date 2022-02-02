@@ -18,7 +18,6 @@ public class Cifrador {
     public String SHA256(String cadena) {
         MessageDigest md = null;
         byte[] hash = null;
-        // Llamamos a la función de hash de java
         try {
             md = MessageDigest.getInstance("SHA-1");
             hash = md.digest(cadena.getBytes(StandardCharsets.UTF_8));

@@ -87,6 +87,25 @@ public class LoginRepository implements CrudRepository<Login,Long>{
                 hc.getTransaction().rollback();
             }
             hc.close();
+        }}
+
+        public boolean deleteByProgramadorId(Long programadorId) throws SQLException {
+            HibernateController hc = HibernateController.getInstance();
+            hc.open();
+            try {
+                hc.getTransaction().begin();
+                Login login = hc.getManager().find(Login.class, programadorId);
+                hc.getManager().remove(login);
+                hc.getTransaction().commit();
+                return true;
+            } catch (Exception e) {
+                throw new SQLException("Error LoginRepository al eliminar login con id: " + programadorId);
+            } finally {
+                if (hc.getTransaction().isActive()) {
+                    hc.getTransaction().rollback();
+                }
+                hc.close();
+            }
         }
-    }
+
 }

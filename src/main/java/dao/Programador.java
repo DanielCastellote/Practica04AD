@@ -14,7 +14,10 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "programador")
-@NamedQuery(name = "Programador.findAll", query = "SELECT c FROM Programador c")
+@NamedQueries({
+        @NamedQuery(name = "Programador.findAll", query = "SELECT c FROM Programador c"),
+        @NamedQuery(name = "Programador.getByMail", query = "SELECT u FROM Programador u WHERE u.email = :email"),
+})
 public class Programador {
 
     private long id;
