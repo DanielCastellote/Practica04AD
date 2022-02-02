@@ -1,5 +1,7 @@
 package controller;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import dto.ProyectoDTO;
 import repository.ProyectoRepository;
 import service.ProyectoService;
@@ -31,6 +33,24 @@ public class ProyectoController {
                 return null;
             }
         }
+    public String getAllProyectoJSON() {
+        try {
+            final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
+            return prettyGson.toJson(proyectoService.getAllProyecto());
+        } catch (SQLException e) {
+            System.err.println("Error ProyectoController en getAllProyecto: " + e.getMessage());
+            return "Error ProyectoController en getAllProyecto: " + e.getMessage();
+        }
+    }
+    public String getProyectoByIdJSON(Long id) {
+        try {
+            final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
+            return prettyGson.toJson(proyectoService.getProyectoById(id));
+        } catch (SQLException e) {
+            System.err.println("Error ProyectoController en getProyectoById: " + e.getMessage());
+            return "Error ProyectoController en getProyectoById: " + e.getMessage();
+        }
+    }
 
         public ProyectoDTO getProyectoById(Long id) {
             try {
