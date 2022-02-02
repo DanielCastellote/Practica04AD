@@ -109,14 +109,14 @@ public class Data {
 
          System.out.println("Insertando Commits");
          hc.getTransaction().begin();
-         Commit c1 = new Commit("Readme Update","",p1,r1);
-         Commit c2 = new Commit("Diagrama Update","",p2,r2);
-         Commit c3 = new Commit("Subida de fotos","",p2,r3);
-         Commit c4 = new Commit("Controller correccion","",p3,r4);
-         Commit c5 = new Commit("Proyect Update","",p3,r4);
-         Commit c6 = new Commit("Readme Update 3.0 correccion","",p3,r4);
-         Commit c7 = new Commit("Inyeccion dependencias update","",p1,r2);
-         Commit c8 = new Commit("Creators update","",p3,r1);
+         Commit c1 = new Commit("Readme Update","Subida readme con lenguaje",p1,r1);
+         Commit c2 = new Commit("Diagrama Update","Relaciones actualizadas",p2,r2);
+         Commit c3 = new Commit("Subida de fotos","Imagenes a color",p2,r3);
+         Commit c4 = new Commit("Controller correccion","Faltas ortograficas",p3,r4);
+         Commit c5 = new Commit("Proyect Update","Version actual",p3,r4);
+         Commit c6 = new Commit("Readme Update 3.0 correccion","Nuevo readme del becario",p3,r4);
+         Commit c7 = new Commit("Inyeccion dependencias update","Inyeccion exitosa",p1,r2);
+         Commit c8 = new Commit("Creators update","Actualizada",p3,r1);
          hc.getManager().persist(c1);
          hc.getManager().persist(c2);
          hc.getManager().persist(c3);
@@ -125,6 +125,7 @@ public class Data {
          hc.getManager().persist(c6);
          hc.getManager().persist(c7);
          hc.getManager().persist(c8);
+
          hc.getTransaction().commit();
 
          System.out.println("Insertando Issues");
@@ -174,6 +175,12 @@ public class Data {
          System.out.println("GET Todos los COMMITS");
          List<CommitDTO> listaCommits = programadorController.getAllCommit();
          System.out.println(listaCommits);
+     }
+     public void CommitsJson(){
+            CommitController commitController = CommitController.getInstance();
+            System.out.println("GET Todos los COMMITS por JSON");
+            System.out.println(commitController.getAllCommitsJSON());
+            //commitController.getCommitByIdJSON(30L);
      }
 
      public void Departamentos(){

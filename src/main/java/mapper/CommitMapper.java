@@ -16,8 +16,8 @@ public class CommitMapper extends BaseMapper<Commit, CommitDTO>{
         commit.setTitulo(item.getTitulo());
         commit.setTexto(item.getTexto());
         commit.setfCreacion(item.getFCreacion());
-        commit.setAutor(item.getAutor());
-        commit.setRepositorio(item.getRepositorio());
+        //commit.setAutor(item.getAutor());
+        //commit.setRepositorio(item.getRepositorio());
         return commit;
     }
     @Override
@@ -27,8 +27,8 @@ public class CommitMapper extends BaseMapper<Commit, CommitDTO>{
                 .titulo(item.getTitulo())
                 .texto(item.getTexto())
                 .fCreacion(item.getfCreacion())
-                .autor(item.getAutor())
-                .repositorio(item.getRepositorio())
+                //.autor(item.getAutor())
+                //.repositorio(item.getRepositorio())
                 .build();
     }
 }

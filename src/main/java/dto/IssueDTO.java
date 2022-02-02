@@ -24,7 +24,6 @@ public class IssueDTO {
                 ", titulo='" + titulo + '\'' +
                 ", texto='" + texto + '\'' +
                 ", fCreacion=" + fCreacion +
-                ", repositorio=" + repositorio +
                 ", estado='" + estado + '\'' +
                 '}';
     }

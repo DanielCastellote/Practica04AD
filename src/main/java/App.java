@@ -22,6 +22,7 @@ public class App {
             data.Tecnologias();
             data.Issues();
             data.Commits();
+            data.CommitsJson();
 
     }
 }

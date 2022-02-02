@@ -26,7 +26,6 @@ public class DepartamentoDTO {
                 ", nombre='" + nombre + '\'' +
                 ", presupuesto=" + presupuesto +
                 ", presupuestoAnual=" + presupuestoAnual +
-                ", programadores=" + programadores +
                 ", proyectos=" + proyectos +
                 '}';
     }

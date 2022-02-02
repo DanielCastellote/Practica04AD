@@ -29,8 +29,6 @@ public class ProyectoDTO {
                 ", presupuesto=" + presupuesto +
                 ", fInicio=" + fInicio +
                 ", fFin=" + fFin +
-                ", programadores=" + programadores +
-                ", departamento=" + departamento +
                 '}';
     }
 }

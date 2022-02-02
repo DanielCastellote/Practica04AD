@@ -1,5 +1,7 @@
 package controller;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import dto.CommitDTO;
 import repository.CommitRepository;
 import service.CommitService;
@@ -29,6 +31,27 @@ public class CommitController {
         } catch (SQLException e) {
             System.err.println("Error CommitController en getAllCommit: " + e.getMessage());
             return null;
+        }
+    }
+
+    public String getAllCommitsJSON() {
+        try {
+            // Vamos a devolver el JSON de los commits
+            final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
+            return prettyGson.toJson(commitService.getAllCommit());
+        } catch (SQLException e) {
+            System.err.println("Error CommitController en getAll: " + e.getMessage());
+            return "Error CommitController en getAll: " + e.getMessage();
+        }
+    }
+    public String getCommitByIdJSON(Long id) {
+        try {
+            // Vamos a devolver el JSON de las categorías
+            final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
+            return prettyGson.toJson(commitService.getCommitById(id));
+        } catch (SQLException e) {
+            System.err.println("Error CommitController en getCommitById: " + e.getMessage());
+            return "Error CommitController en getCommitById: " + e.getMessage();
         }
     }
 

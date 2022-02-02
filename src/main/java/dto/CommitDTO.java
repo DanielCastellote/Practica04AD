@@ -1,5 +1,7 @@
 package dto;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import dao.Programador;
 import dao.Repositorio;
 import lombok.Builder;
@@ -16,8 +18,8 @@ public class CommitDTO {
     private String titulo;
     private String texto;
     private Date fCreacion;
-    private Programador autor;
-    private Repositorio repositorio;
+    //private Programador autor;
+    //private Repositorio repositorio;
 
     @Override
     public String toString() {
@@ -26,8 +28,6 @@ public class CommitDTO {
                 ", titulo='" + titulo + '\'' +
                 ", texto='" + texto + '\'' +
                 ", fCreacion=" + fCreacion +
-                ", autor=" + autor +
-                ", repositorio=" + repositorio +
                 '}';
     }
 }
