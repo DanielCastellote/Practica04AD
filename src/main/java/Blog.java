@@ -2,9 +2,9 @@ import com.mongodb.ConnectionString;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoDatabase;
-import controller.ProgramadorController;
+import controller.*;
 import dao.*;
-import dto.ProgramadorDTO;
+import dto.*;
 import manager.HibernateController;
 
 import java.util.Date;
@@ -170,27 +170,61 @@ public class Blog {
      }
 
      public void Commits(){
-
+         System.out.println("INICIO DE COMMITS")  ;
+         CommitController programadorController = CommitController.getInstance();
+         System.out.println("GET Todos los COMMITS");
+         List<CommitDTO> listaCommits = programadorController.getAllCommit();
+         System.out.println(listaCommits);
      }
+
      public void Departamentos(){
-
+         System.out.println("INICIO DE DEPARTAMENTOS")  ;
+         DepartamentoController programadorController = DepartamentoController.getInstance();
+         System.out.println("GET Todos los departamentos");
+         List<DepartamentoDTO> listaDepartamentos = programadorController.getAllDepartamento();
+         System.out.println(listaDepartamentos);
      }
+
      public void Issues(){
-
+         System.out.println("INICIO DE PROGRAMADORES")  ;
+        IssueController issueController = IssueController.getInstance();
+         System.out.println("GET Todos los programadores");
+         List<IssueDTO> listaIssues = issueController.getAllIssue();
+         System.out.println(listaIssues);
      }
-     public void Logins(){
 
+     public void Logins(){
+         System.out.println("INICIO DE LOGINS")  ;
+         LoginController loginController = LoginController.getInstance();
+         System.out.println("GET Todos los programadores");
+         List<LoginDTO> listaLogin = loginController.getAllLogin();
+         System.out.println(listaLogin);
      }
 
      public void Proyectos(){
-
+         System.out.println("INICIO DE PROYECTOS")  ;
+         ProyectoController proyectoController = ProyectoController.getInstance();
+         System.out.println("GET Todos los proyectos");
+         List<ProyectoDTO> listaProyecto = proyectoController.getAllProyectos();
+         System.out.println(listaProyecto);
      }
+
      public void Repositorios(){
-
+         System.out.println("INICIO DE REPOSITORIOS")  ;
+         ProgramadorController programadorController = ProgramadorController.getInstance();
+         System.out.println("GET Todos los repositorios");
+         List<ProgramadorDTO> listaProgramadores = programadorController.getAllProgramadores();
+         System.out.println(listaProgramadores);
      }
+
      public void Tecnologias(){
-
+         System.out.println("INICIO DE TECNOLOGIAS")  ;
+         TecnologiaController tecnologiaController = TecnologiaController.getInstance();
+         System.out.println("GET Todos los programadores");
+         List<TecnologiaDTO> listaTecnologia = tecnologiaController.getAllTecnologias();
+         System.out.println(listaTecnologia);
      }
+
 
     public void Programadores(){
     System.out.println("INICIO DE PROGRAMADORES")  ;

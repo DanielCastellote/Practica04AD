@@ -15,7 +15,6 @@ public class App {
         if (properties.readProperty("database.init").equals("true"))
             blog.initDataBase();
             blog.Programadores();
-            /*
             blog.Departamentos();
             blog.Proyectos();
             blog.Logins();
@@ -24,6 +23,5 @@ public class App {
             blog.Issues();
             blog.Commits();
 
-             */
     }
 }
