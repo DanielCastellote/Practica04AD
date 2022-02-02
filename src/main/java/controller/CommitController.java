@@ -39,8 +39,8 @@ public class CommitController {
             final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
             return prettyGson.toJson(commitService.getAllCommit());
         } catch (SQLException e) {
-            System.err.println("Error CommitController en getAll: " + e.getMessage());
-            return "Error CommitController en getAll: " + e.getMessage();
+            System.err.println("Error CommitController en getAllCommit: " + e.getMessage());
+            return "Error CommitController en getAllCommit: " + e.getMessage();
         }
     }
     public String getCommitByIdJSON(Long id) {
