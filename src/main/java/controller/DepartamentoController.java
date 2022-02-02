@@ -38,8 +38,18 @@ public class DepartamentoController {
             final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
             return prettyGson.toJson(departamentoService.getAllDepartamento());
         } catch (SQLException e) {
-            System.err.println("Error DepartamentoController en getAll: " + e.getMessage());
-            return "Error DepartamentoController en getAll: " + e.getMessage();
+            System.err.println("Error DepartamentoController en getAllDepartamento: " + e.getMessage());
+            return "Error DepartamentoController en Departamento: " + e.getMessage();
+        }
+    }
+    public String getDepartamentoByIdJSON(Long id) {
+        try {
+            // Vamos a devolver el JSON de las categorías
+            final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
+            return prettyGson.toJson(departamentoService.getDepartamentoById(id));
+        } catch (SQLException e) {
+            System.err.println("Error DepartamentoController en getDepartamentoById: " + e.getMessage());
+            return "Error DepartamentoController en getDepartamentoById: " + e.getMessage();
         }
     }
 
