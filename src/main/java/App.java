@@ -14,34 +14,8 @@ public class App {
 
         if (properties.readProperty("database.init").equals("true"))
             data.initDataBase();
-            runData();
-
+            data.initInfo();
 
     }
 
-    public static void runData(){
-        Data data = Data.getInstance();
-        //blog.Logins();
-
-        data.Tecnologias();
-        data.TecnologiasJson();
-
-        data.Issues();
-        data.IssuesJson();
-
-        data.Commits();
-        data.CommitsJson();
-
-        data.Repositorios();
-        data.RepositoriosJson();
-
-        data.Proyectos();
-        data.ProyectosJson();
-
-        data.Departamentos();
-        data.DepartamentosJson();
-
-        data.Programadores();
-        data.ProgramadoresJson();
-    }
 }

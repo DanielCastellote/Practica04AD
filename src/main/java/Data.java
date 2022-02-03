@@ -154,54 +154,69 @@ public class Data {
      }
 
      private void removeData() {
-         // Usando Hibernate
-//        transactionManager.begin();
-//        // Collection == name of the class being saved ⮧
-//        entityManager.createNativeQuery("db.GameCharacter.drop()").executeUpdate();
-//        transactionManager.commit();
-         // Lo sutyo sería un controlador
          ConnectionString connectionString = new ConnectionString("mongodb://mongoadmin:mongopass@localhost/test?authSource=admin");
-         //ConnectionString connectionString = new ConnectionString("localhost:8081");
          MongoClient mongoClient = MongoClients.create(connectionString);
-
-         // Obtenemos la base de datos que necesitamos
          MongoDatabase dataDJ = mongoClient.getDatabase("DataDJ");
-         dataDJ.drop(); // Si queremos borrar toda la base de datos
+         dataDJ.drop();
      }
+     public void initInfo(){
+             //blog.Logins()
+            Tecnologias();
+            TecnologiasJson();
 
-     public void Commits(){
+            Issues();
+            IssuesJson();
+
+            Commits();
+            CommitsJson();
+
+            Repositorios();
+            RepositoriosJson();
+
+            Proyectos();
+            ProyectosJson();
+
+            Departamentos();
+            DepartamentosJson();
+
+            Programadores();
+            ProgramadoresJson();
+         }
+
+
+     private void Commits(){
          System.out.println("INICIO DE COMMITS")  ;
          CommitController commitController = CommitController.getInstance();
          List<CommitDTO> listaCommits = commitController.getAllCommit();
          System.out.println("GET Todos los COMMITS" +"\n"+listaCommits);
      }
-     public void CommitsJson(){
+    private void CommitsJson(){
             CommitController commitController = CommitController.getInstance();
             System.out.println("GET Todos los COMMITS por JSON" +"\n"+ commitController.getAllCommitsJSON());
             System.out.println("GET COMMIT por ID (=30) por JSON"+"\n"+ commitController.getCommitByIdJSON(30L));
             System.out.println("GET COMMIT por ID (=34) por JSON"+"\n"+ commitController.getCommitByIdJSON(34L));
      }
 
-     public void Departamentos(){
+    private void Departamentos(){
          System.out.println("INICIO DE DEPARTAMENTOS")  ;
          DepartamentoController departamentoController = DepartamentoController.getInstance();
          List<DepartamentoDTO> listaDepartamentos = departamentoController.getAllDepartamento();
          System.out.println("GET Todos los DEPARTAMENTOS" +"\n"+listaDepartamentos);
      }
-     public void DepartamentosJson(){
+    private void DepartamentosJson(){
          DepartamentoController departamentoController = DepartamentoController.getInstance();
          System.out.println("GET Todos los DEPARTAMENTOS por JSON" +"\n"+ departamentoController.getAllDepartamentoJSON());
          System.out.println("GET DEPARTAMENTOS por ID (=1) por JSON"+"\n"+ departamentoController.getDepartamentoByIdJSON(1L));
          System.out.println("GET DEPARTAMENTOS por ID (=4) por JSON"+"\n"+ departamentoController.getDepartamentoByIdJSON(4L));
      }
 
-    public void Issues(){
+    private void Issues(){
         System.out.println("INICIO DE ISSUES")  ;
         IssueController issueController = IssueController.getInstance();
         List<IssueDTO> listaIssue = issueController.getAllIssue();
         System.out.println("GET Todos los ISSUES" +"\n"+listaIssue);
     }
-    public void IssuesJson(){
+    private void IssuesJson(){
         IssueController issueController = IssueController.getInstance();
         System.out.println("GET Todos los ISSUE por JSON" +"\n"+ issueController.getAllIssueJSON());
         System.out.println("GET ISSUE por ID (=40) por JSON"+"\n"+ issueController.getIssueByIdJSON(40L));
@@ -218,39 +233,39 @@ public class Data {
 
  */
 
-     public void Proyectos(){
+    private void Proyectos(){
          System.out.println("INICIO DE PROYECTOS")  ;
          ProyectoController proyectoController = ProyectoController.getInstance();
          List<ProyectoDTO> listaProyectos = proyectoController.getAllProyectos();
          System.out.println("GET Todos los PROYECTOS" +"\n"+listaProyectos);
      }
-    public void ProyectosJson(){
+    private void ProyectosJson(){
         ProyectoController proyectoController = ProyectoController.getInstance();
         System.out.println("GET Todos los PROYECTO por JSON" +"\n"+ proyectoController.getAllProyectoJSON());
         System.out.println("GET PROYECTO por ID (=5) por JSON"+"\n"+ proyectoController.getProyectoByIdJSON(5L));
         System.out.println("GET PROYECTO por ID (=8) por JSON"+"\n"+ proyectoController.getProyectoByIdJSON(8L));
     }
 
-     public void Repositorios(){
+    private void Repositorios(){
          System.out.println("INICIO DE REPOSITORIOS") ;
          RepositorioController repositorioController = RepositorioController.getInstance();
          List<RepositorioDTO> listaRepositorios = repositorioController.getAllRepositorio();
          System.out.println("GET Todos los REPOSITORIOS"+"\n"+listaRepositorios);
      }
-    public void RepositoriosJson(){
+    private void RepositoriosJson(){
         RepositorioController repositorioController = RepositorioController.getInstance();
         System.out.println("GET Todos los PROYECTO por JSON" +"\n"+ repositorioController.getAllRepositorioJSON());
         System.out.println("GET PROYECTO por ID (=14) por JSON"+"\n"+ repositorioController.getRepositorioByIdJSON(14L));
         System.out.println("GET PROYECTO por ID (=17) por JSON"+"\n"+ repositorioController.getRepositorioByIdJSON(17L));
     }
 
-     public void Tecnologias(){
+    private void Tecnologias(){
          System.out.println("INICIO DE TECNOLOGIAS")  ;
          TecnologiaController tecnologiaController = TecnologiaController.getInstance();
          List<TecnologiaDTO> listaTecnologia = tecnologiaController.getAllTecnologias();
          System.out.println("GET Todos los TECNOLOGIA"+"\n"+listaTecnologia);
      }
-    public void TecnologiasJson(){
+    private void TecnologiasJson(){
         TecnologiaController tecnologiaController = TecnologiaController.getInstance();
         System.out.println("GET Todos los TECNOLOGIA por JSON" +"\n"+ tecnologiaController.getAllTecnologiaJSON());
         System.out.println("GET TECNOLOGIA por ID (=18) por JSON"+"\n"+ tecnologiaController.getTecnologiaByIdJSON(18L));
@@ -258,13 +273,13 @@ public class Data {
     }
 
 
-    public void Programadores(){
+    private void Programadores(){
         System.out.println("INICIO DE PROGRAMADORES")  ;
         ProgramadorController programadorController = ProgramadorController.getInstance();
         List<ProgramadorDTO> listaProgramadores = programadorController.getAllProgramadores();
         System.out.println("GET Todos los PROGRAMADORES"+"\n"+listaProgramadores);
      }
-    public void ProgramadoresJson(){
+    private void ProgramadoresJson(){
         ProgramadorController programadorController = ProgramadorController.getInstance();
         System.out.println("GET Todos los PROGRAMADORES por JSON" +"\n"+ programadorController.getAllProgramadorJSON());
         System.out.println("GET PROGRAMADORES por ID (=10) por JSON"+"\n"+ programadorController.getProgramadorByIdJSON(10L));
