@@ -18,11 +18,5 @@ Hemos usado las siguientes tecnologías:</br>
 Hemos realizado un diagrama para esquematizar toda nuestra BBDD y realizar todas las restricciones:</br></br>
 ![diagrama](./diagrams/DiagramaClases.png);</br>
 
-## Mongo Express
-Estos son los datos para nuestra BBDD: </br>
-
-Conectarte a  http://localhost:8081/ 
-- server: localhost:27017
-- user: 
-- password: 
-- base de datos: 
+## Video 
+Enlace a nuestro video: 
