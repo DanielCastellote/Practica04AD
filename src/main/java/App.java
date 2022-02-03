@@ -21,23 +21,27 @@ public class App {
 
     public static void runData(){
         Data data = Data.getInstance();
-        data.Programadores();
-
-        data.Proyectos();
-
         //blog.Logins();
 
-        data.Repositorios();
-
         data.Tecnologias();
+        data.TecnologiasJson();
 
         data.Issues();
         data.IssuesJson();
 
+        data.Commits();
+        data.CommitsJson();
+
+        data.Repositorios();
+        data.RepositoriosJson();
+
+        data.Proyectos();
+        data.ProyectosJson();
+
         data.Departamentos();
         data.DepartamentosJson();
 
-        data.Commits();
-        data.CommitsJson();
+        data.Programadores();
+        data.ProgramadoresJson();
     }
 }

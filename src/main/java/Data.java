@@ -221,35 +221,58 @@ public class Data {
      public void Proyectos(){
          System.out.println("INICIO DE PROYECTOS")  ;
          ProyectoController proyectoController = ProyectoController.getInstance();
-         System.out.println("GET Todos los proyectos");
-         List<ProyectoDTO> listaProyecto = proyectoController.getAllProyectos();
-         System.out.println(listaProyecto);
+         List<ProyectoDTO> listaProyectos = proyectoController.getAllProyectos();
+         System.out.println("GET Todos los PROYECTOS" +"\n"+listaProyectos);
      }
+    public void ProyectosJson(){
+        ProyectoController proyectoController = ProyectoController.getInstance();
+        System.out.println("GET Todos los PROYECTO por JSON" +"\n"+ proyectoController.getAllProyectoJSON());
+        System.out.println("GET PROYECTO por ID (=5) por JSON"+"\n"+ proyectoController.getProyectoByIdJSON(5L));
+        System.out.println("GET PROYECTO por ID (=8) por JSON"+"\n"+ proyectoController.getProyectoByIdJSON(8L));
+    }
 
      public void Repositorios(){
-         System.out.println("INICIO DE REPOSITORIOS")  ;
-         ProgramadorController programadorController = ProgramadorController.getInstance();
-         System.out.println("GET Todos los repositorios");
-         List<ProgramadorDTO> listaProgramadores = programadorController.getAllProgramadores();
-         System.out.println(listaProgramadores);
+         System.out.println("INICIO DE REPOSITORIOS") ;
+         RepositorioController repositorioController = RepositorioController.getInstance();
+         List<RepositorioDTO> listaRepositorios = repositorioController.getAllRepositorio();
+         System.out.println("GET Todos los REPOSITORIOS"+"\n"+listaRepositorios);
      }
+    public void RepositoriosJson(){
+        RepositorioController repositorioController = RepositorioController.getInstance();
+        System.out.println("GET Todos los PROYECTO por JSON" +"\n"+ repositorioController.getAllRepositorioJSON());
+        System.out.println("GET PROYECTO por ID (=14) por JSON"+"\n"+ repositorioController.getRepositorioByIdJSON(14L));
+        System.out.println("GET PROYECTO por ID (=17) por JSON"+"\n"+ repositorioController.getRepositorioByIdJSON(17L));
+    }
 
      public void Tecnologias(){
          System.out.println("INICIO DE TECNOLOGIAS")  ;
          TecnologiaController tecnologiaController = TecnologiaController.getInstance();
-         System.out.println("GET Todos los programadores");
          List<TecnologiaDTO> listaTecnologia = tecnologiaController.getAllTecnologias();
-         System.out.println(listaTecnologia);
+         System.out.println("GET Todos los TECNOLOGIA"+"\n"+listaTecnologia);
      }
+    public void TecnologiasJson(){
+        TecnologiaController tecnologiaController = TecnologiaController.getInstance();
+        System.out.println("GET Todos los TECNOLOGIA por JSON" +"\n"+ tecnologiaController.getAllTecnologiaJSON());
+        System.out.println("GET TECNOLOGIA por ID (=18) por JSON"+"\n"+ tecnologiaController.getTecnologiaByIdJSON(18L));
+        System.out.println("GET TECNOLOGIA por ID (=22) por JSON"+"\n"+ tecnologiaController.getTecnologiaByIdJSON(22L));
+    }
 
 
     public void Programadores(){
-    System.out.println("INICIO DE PROGRAMADORES")  ;
+        System.out.println("INICIO DE PROGRAMADORES")  ;
         ProgramadorController programadorController = ProgramadorController.getInstance();
-        System.out.println("GET Todos los programadores");
         List<ProgramadorDTO> listaProgramadores = programadorController.getAllProgramadores();
-        System.out.println(listaProgramadores);
-        }
+        System.out.println("GET Todos los PROGRAMADORES"+"\n"+listaProgramadores);
+     }
+    public void ProgramadoresJson(){
+        ProgramadorController programadorController = ProgramadorController.getInstance();
+        System.out.println("GET Todos los PROGRAMADORES por JSON" +"\n"+ programadorController.getAllProgramadorJSON());
+        System.out.println("GET PROGRAMADORES por ID (=10) por JSON"+"\n"+ programadorController.getProgramadorByIdJSON(10L));
+        System.out.println("GET PROGRAMADORES por ID (=13) por JSON"+"\n"+ programadorController.getProgramadorByIdJSON(13L));
+    }
+
+
+
 
      // TODO (BORRAR) EJEMPLOS JOSE LUIS
 /*
