@@ -7,7 +7,10 @@ import dao.*;
 import dto.*;
 import manager.HibernateController;
 
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 public class Data {
         private static Data instance;
@@ -24,7 +27,6 @@ public class Data {
 
     //TODO BORRAR EJEMPLOS
      public void initDataBase() {
-         // Borramos los datos previos
          removeData();
 
          HibernateController hc = HibernateController.getInstance();
@@ -160,7 +162,7 @@ public class Data {
          dataDJ.drop();
      }
      public void initInfo(){
-             //blog.Logins()
+            //Logins();
             Tecnologias();
             TecnologiasJson();
 
@@ -179,8 +181,9 @@ public class Data {
             Departamentos();
             DepartamentosJson();
 
-            Programadores();
             ProgramadoresJson();
+            Programadores();
+
          }
 
 
@@ -278,6 +281,31 @@ public class Data {
         ProgramadorController programadorController = ProgramadorController.getInstance();
         List<ProgramadorDTO> listaProgramadores = programadorController.getAllProgramadores();
         System.out.println("GET Todos los PROGRAMADORES"+"\n"+listaProgramadores);
+
+
+        ProgramadorDTO programadorDTO1 = ProgramadorDTO.builder()
+                .nombre("Manuel")
+                .fAlta(new Date(System.currentTimeMillis()))
+                .salario(2800)
+                .email("manuel@gmail.com")
+                .contrasena("78963")
+                .build();
+        programadorDTO1 = programadorController.postProgramador(programadorDTO1);
+        System.out.println("POST Programador");
+
+
+        System.out.println("UPDATE Programador con ID:" + "10");
+        Optional<ProgramadorDTO> optionalProgramadorDTO = Optional.ofNullable(programadorController.getProgramadorById(10L));
+        if (optionalProgramadorDTO.isPresent()) {
+            optionalProgramadorDTO.get().setEmail("emailupdate@gmail.com");
+            programadorController.updateProgramador(optionalProgramadorDTO.get());
+            System.out.println("FIN UPDATE");
+        }
+        System.out.println("DELETE Usuario con ID: " + "10");
+        optionalProgramadorDTO = programadorController.getProgramadorByIdOptional(10L);
+        if (optionalProgramadorDTO.isPresent()) {
+            System.out.println(programadorController.deleteProgramador(optionalProgramadorDTO.get()));
+        }
      }
     private void ProgramadoresJson(){
         ProgramadorController programadorController = ProgramadorController.getInstance();
@@ -285,97 +313,4 @@ public class Data {
         System.out.println("GET PROGRAMADORES por ID (=10) por JSON"+"\n"+ programadorController.getProgramadorByIdJSON(10L));
         System.out.println("GET PROGRAMADORES por ID (=13) por JSON"+"\n"+ programadorController.getProgramadorByIdJSON(13L));
     }
-
-
-
-
-     // TODO (BORRAR) EJEMPLOS JOSE LUIS
-/*
-     public void Comments() {
-         System.out.println("INICIO COMENTARIOS");
-
-         CommentController commentController = CommentController.getInstance();
-
-         System.out.println("GET Todos los Comentarios");
-         List<CommentDTO> lista = commentController.getAllComments();
-         System.out.println(lista);
-
-         System.out.println("GET Comentario con ID: " + lista.get(1).getId());
-         System.out.println(commentController.getCommentById(lista.get(1).getId()));
-
-         System.out.println("POST Insertando Comentario 1");
-
-         User user = lista.get(0).getUser(); // Sé que el id existe ...
-         // Y un Post
-         Post post = lista.get(0).getPost();
-
-         CommentDTO commentDTO1 = CommentDTO.builder()
-                 .texto("Comentario 1 - " + Instant.now().toString())
-                 .user(user)
-                 .post(post)
-                 .build();
-         commentDTO1 = commentController.postComment(commentDTO1);
-         System.out.println(commentDTO1);
-
-         System.out.println("POST Insertando Comentario 2");
-
-         user = lista.get(3).getUser();
-         // Y un Post
-         post = lista.get(3).getPost();
-
-         CommentDTO commentDTO2 = CommentDTO.builder()
-                 .texto("Comentario 2 - " + Instant.now().toString())
-                 .user(user)
-                 .post(post)
-                 .build();
-         commentDTO2 = commentController.postComment(commentDTO2);
-         System.out.println(commentDTO2);
-
-         System.out.println("UPDATE Comentario con ID: " + commentDTO1.getId());
-         Optional<CommentDTO> optionalCommentDTO = commentController.getCommentByIdOptional(commentDTO1.getId());
-         if (optionalCommentDTO.isPresent()) {
-             optionalCommentDTO.get().setTexto("Update " + LocalDateTime.now());
-             System.out.println(commentController.updateComment(optionalCommentDTO.get()));
-         }
-
-         System.out.println("DELETE Comentario con ID: " + commentDTO2.getId());
-         optionalCommentDTO = commentController.getCommentByIdOptional(commentDTO2.getId());
-         if (optionalCommentDTO.isPresent()) {
-             System.out.println(commentController.deleteComment(optionalCommentDTO.get()));
-         }
-
-         System.out.println("GET Dado un post ID: " + post.getId() + " Obtener sus Comentarios Post --> Comentarios");
-         // No deja hacerlo porque JPA no permite Join con Mongo
-         // postController.getPostById(2L).getComments().forEach(System.out::println);
-         post.getComments().forEach(System.out::println);
-
-         System.out.println("GET Dado un usuario ID: " + user.getId() + " obtener sus comentarios Usuario --> Comentarios");
-         // JPA en Mongo no permite las Queris con Joins
-         // userController.getUserById(1L).getComentarios().forEach(System.out::println);
-         user.getComments().forEach(System.out::println);
-
-         System.out.println("GET Dado un comentario ID: " + commentDTO1.getId() + " saber su Post Comentario --> Post");
-         // System.out.println(commentController.getCommentById(2L).getPost());
-         System.out.println(commentDTO1.getPost());
-
-         System.out.println("GET Dado un comentario ID: " + commentDTO1.getId() + " saber su Autor Comentario --> Comentario");
-         // System.out.println(commentController.getCommentById(2L).getUser());
-         System.out.println(commentDTO1.getUser());
-
-         System.out.println("DELETE Borrrando un post ID: " + post.getId() + " se borran sus comentarios? Post --> Comentario"); // Cascada
-         PostController postController = PostController.getInstance();
-         PostMapper postMapper = new PostMapper();
-         System.out.println(postController.deletePost(postMapper.toDTO(post)));
-
-         System.out.println("DELETE Borrrando un usuario usuario ID: " + user.getId() + "  se borran comentarios User --> Comentarios"); // Cascada
-         // Cascada de post y de post comentarios
-         UserController userController = UserController.getInstance();
-         UserMapper userMapper = new UserMapper();
-         System.out.println(userController.deleteUser(userMapper.toDTO(user)));
-
-         System.out.println("FIN COMENTARIOS");
-
-
-
- */
      }

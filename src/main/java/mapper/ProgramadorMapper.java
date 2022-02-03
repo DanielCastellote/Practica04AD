@@ -16,6 +16,7 @@ public class ProgramadorMapper extends BaseMapper<Programador, ProgramadorDTO>{
         programador.setSalario(item.getSalario());
         programador.setEmail(item.getEmail());
         programador.setContrasena(item.getContrasena());
+
         return programador;
     }
 

@@ -8,6 +8,7 @@ import service.ProgramadorService;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Optional;
 
 public class ProgramadorController {
     private static ProgramadorController controller = null;
@@ -85,6 +86,14 @@ public class ProgramadorController {
         } catch (SQLException e) {
             System.err.println("Error ProgramadorController en deleteProgramador " + e.getMessage());
             return null;
+        }
+    }
+    public Optional<ProgramadorDTO> getProgramadorByIdOptional(Long id) {
+        try {
+            return Optional.of(programadorService.getProgramadorById(id));
+        } catch (SQLException e) {
+            System.err.println("Error ProgramadorController en getProgramadorById: " + e.getMessage());
+            return Optional.empty();
         }
     }
 
