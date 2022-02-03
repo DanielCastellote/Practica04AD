@@ -160,6 +160,17 @@ public class Data {
          MongoClient mongoClient = MongoClients.create(connectionString);
          MongoDatabase dataDJ = mongoClient.getDatabase("DataDJ");
          dataDJ.drop();
+         /*
+
+    const { MongoClient } = require('mongodb');
+    const uri = "mongodb+srv://Javier:mongo123@cluster0.tmmk0.mongodb.net/DataDJ?retryWrites=true&w=majority";
+    const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+    client.connect(err => {
+        const collection = client.db("test").collection("devices");
+        // perform actions on the collection object
+    client.close();
+       });
+          */
      }
      public void initInfo(){
             //Logins();

@@ -26,7 +26,6 @@ public class CommitService extends BaseService<Commit, Long, CommitRepository>{
     }
 
     public CommitDTO postCommit(CommitDTO CommitDTO) throws SQLException {
-
         Commit commit = this.save(mapper.fromDTO(CommitDTO));
         return mapper.toDTO(commit);
     }
