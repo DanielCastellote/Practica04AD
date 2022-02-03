@@ -5,7 +5,6 @@ import java.util.List;
 
 public interface CrudRepository<T, ID> {
 
-    // Operaciones CRUD
     List<T> findAll() throws SQLException;
 
     T getById(ID id) throws SQLException;

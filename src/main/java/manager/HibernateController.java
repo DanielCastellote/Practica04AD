@@ -10,7 +10,6 @@ import javax.persistence.Persistence;
     public class HibernateController {
         private static HibernateController controller;
 
-
         private EntityManagerFactory entityManagerFactory;
         private EntityManager manager;
         private EntityTransaction transaction;

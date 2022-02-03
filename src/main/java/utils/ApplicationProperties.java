@@ -19,7 +19,6 @@ public class ApplicationProperties {
     }
 
     public String readProperty(String keyName) {
-        // Logger.getLogger(getClass().getName()).log(Level.INFO, "Leyendo propiedad " + keyName);
         return properties.getProperty(keyName, "No existe esa clave en el fichero de propiedades");
     }
 
