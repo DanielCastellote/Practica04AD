@@ -18,5 +18,6 @@ Hemos usado las siguientes tecnologías:</br>
 Hemos realizado un diagrama para esquematizar toda nuestra BBDD y realizar todas las restricciones:</br></br>
 ![diagrama](./diagrams/DiagramaClases.png);</br>
 
-## Video 
+## Video y Repositorio
 Enlace a nuestro video: 
+Enlace a nuestro repositorio de trabajo: https://github.com/DanielCastellote/Practica04AD
