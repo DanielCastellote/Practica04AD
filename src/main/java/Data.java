@@ -175,11 +175,13 @@ public class Data {
             Repositorios();
             RepositoriosJson();
 
-            Proyectos();
-            ProyectosJson();
-
             Departamentos();
             DepartamentosJson();
+
+            //APLICACION DE OPERACIONES CRUD
+            // VER POST, UPDATE y DELETE EN CONSOLA + MONGO
+            ProyectosJson();
+            Proyectos();
 
             ProgramadoresJson();
             Programadores();
@@ -241,12 +243,33 @@ public class Data {
          ProyectoController proyectoController = ProyectoController.getInstance();
          List<ProyectoDTO> listaProyectos = proyectoController.getAllProyectos();
          System.out.println("GET Todos los PROYECTOS" +"\n"+listaProyectos);
+
+        System.out.println("POST proyecto");
+        ProyectoDTO proyectoDTO1 = ProyectoDTO.builder()
+                .nombre("Manuel")
+                .presupuesto(2000)
+                .build();
+        proyectoDTO1 = proyectoController.postProyecto(proyectoDTO1);
+        System.out.println("FIN POST");
+
+        System.out.println("UPDATE Proyecto con ID:" + "7");
+        Optional<ProyectoDTO> optionalProyectoDTO = Optional.ofNullable(proyectoController.getProyectoById(7L));
+        if (optionalProyectoDTO.isPresent()) {
+            optionalProyectoDTO.get().setNombre("Proyecto Fin Grado");
+            proyectoController.updateProyecto(optionalProyectoDTO.get());
+            System.out.println("FIN UPDATE");
+        }
+        System.out.println("DELETE Usuario con ID: " + "7");
+        optionalProyectoDTO = proyectoController.getProyectoByIdOptional(7L);
+        if (optionalProyectoDTO.isPresent()) {
+            System.out.println(proyectoController.deleteProyecto(optionalProyectoDTO.get()));
+        }
      }
     private void ProyectosJson(){
         ProyectoController proyectoController = ProyectoController.getInstance();
         System.out.println("GET Todos los PROYECTO por JSON" +"\n"+ proyectoController.getAllProyectoJSON());
         System.out.println("GET PROYECTO por ID (=5) por JSON"+"\n"+ proyectoController.getProyectoByIdJSON(5L));
-        System.out.println("GET PROYECTO por ID (=8) por JSON"+"\n"+ proyectoController.getProyectoByIdJSON(8L));
+        System.out.println("GET PROYECTO por ID (=7) por JSON"+"\n"+ proyectoController.getProyectoByIdJSON(7L));
     }
 
     private void Repositorios(){
@@ -282,7 +305,7 @@ public class Data {
         List<ProgramadorDTO> listaProgramadores = programadorController.getAllProgramadores();
         System.out.println("GET Todos los PROGRAMADORES"+"\n"+listaProgramadores);
 
-
+        System.out.println("POST Programador");
         ProgramadorDTO programadorDTO1 = ProgramadorDTO.builder()
                 .nombre("Manuel")
                 .fAlta(new Date(System.currentTimeMillis()))
@@ -291,7 +314,7 @@ public class Data {
                 .contrasena("78963")
                 .build();
         programadorDTO1 = programadorController.postProgramador(programadorDTO1);
-        System.out.println("POST Programador");
+        System.out.println("FIN POST Programador");
 
 
         System.out.println("UPDATE Programador con ID:" + "10");
