@@ -296,7 +296,7 @@ public class Data {
             proyectoController.updateProyecto(optionalProyectoDTO.get());
             System.out.println("FIN UPDATE");
         }
-        System.out.println("DELETE Usuario con ID: " + "7");
+        System.out.println("DELETE Proyecto con ID: " + "7");
         optionalProyectoDTO = proyectoController.getProyectoByIdOptional(7L);
         if (optionalProyectoDTO.isPresent()) {
             System.out.println(proyectoController.deleteProyecto(optionalProyectoDTO.get()));
