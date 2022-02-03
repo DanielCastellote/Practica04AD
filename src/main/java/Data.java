@@ -249,40 +249,6 @@ public class Data {
 
  */
 
-    private void Proyectos(){
-         System.out.println("INICIO DE PROYECTOS")  ;
-         ProyectoController proyectoController = ProyectoController.getInstance();
-         List<ProyectoDTO> listaProyectos = proyectoController.getAllProyectos();
-         System.out.println("GET Todos los PROYECTOS" +"\n"+listaProyectos);
-
-        System.out.println("POST proyecto");
-        ProyectoDTO proyectoDTO1 = ProyectoDTO.builder()
-                .nombre("Manuel")
-                .presupuesto(2000)
-                .build();
-        proyectoDTO1 = proyectoController.postProyecto(proyectoDTO1);
-        System.out.println("FIN POST");
-
-        System.out.println("UPDATE Proyecto con ID:" + "7");
-        Optional<ProyectoDTO> optionalProyectoDTO = Optional.ofNullable(proyectoController.getProyectoById(7L));
-        if (optionalProyectoDTO.isPresent()) {
-            optionalProyectoDTO.get().setNombre("Proyecto Fin Grado");
-            proyectoController.updateProyecto(optionalProyectoDTO.get());
-            System.out.println("FIN UPDATE");
-        }
-        System.out.println("DELETE Usuario con ID: " + "7");
-        optionalProyectoDTO = proyectoController.getProyectoByIdOptional(7L);
-        if (optionalProyectoDTO.isPresent()) {
-            System.out.println(proyectoController.deleteProyecto(optionalProyectoDTO.get()));
-        }
-     }
-    private void ProyectosJson(){
-        ProyectoController proyectoController = ProyectoController.getInstance();
-        System.out.println("GET Todos los PROYECTO por JSON" +"\n"+ proyectoController.getAllProyectoJSON());
-        System.out.println("GET PROYECTO por ID (=5) por JSON"+"\n"+ proyectoController.getProyectoByIdJSON(5L));
-        System.out.println("GET PROYECTO por ID (=7) por JSON"+"\n"+ proyectoController.getProyectoByIdJSON(7L));
-    }
-
     private void Repositorios(){
          System.out.println("INICIO DE REPOSITORIOS") ;
          RepositorioController repositorioController = RepositorioController.getInstance();
@@ -309,7 +275,39 @@ public class Data {
         System.out.println("GET TECNOLOGIA por ID (=22) por JSON"+"\n"+ tecnologiaController.getTecnologiaByIdJSON(22L));
     }
 
+    private void Proyectos(){
+        System.out.println("INICIO DE PROYECTOS")  ;
+        ProyectoController proyectoController = ProyectoController.getInstance();
+        List<ProyectoDTO> listaProyectos = proyectoController.getAllProyectos();
+        System.out.println("GET Todos los PROYECTOS" +"\n"+listaProyectos);
 
+        System.out.println("POST proyecto");
+        ProyectoDTO proyectoDTO1 = ProyectoDTO.builder()
+                .nombre("Video Explicativo")
+                .presupuesto(2000)
+                .build();
+        proyectoDTO1 = proyectoController.postProyecto(proyectoDTO1);
+        System.out.println("FIN POST");
+
+        System.out.println("UPDATE Proyecto con ID:" + "7");
+        Optional<ProyectoDTO> optionalProyectoDTO = Optional.ofNullable(proyectoController.getProyectoById(7L));
+        if (optionalProyectoDTO.isPresent()) {
+            optionalProyectoDTO.get().setNombre("Proyecto Fin Grado");
+            proyectoController.updateProyecto(optionalProyectoDTO.get());
+            System.out.println("FIN UPDATE");
+        }
+        System.out.println("DELETE Usuario con ID: " + "7");
+        optionalProyectoDTO = proyectoController.getProyectoByIdOptional(7L);
+        if (optionalProyectoDTO.isPresent()) {
+            System.out.println(proyectoController.deleteProyecto(optionalProyectoDTO.get()));
+        }
+    }
+    private void ProyectosJson(){
+        ProyectoController proyectoController = ProyectoController.getInstance();
+        System.out.println("GET Todos los PROYECTO por JSON" +"\n"+ proyectoController.getAllProyectoJSON());
+        System.out.println("GET PROYECTO por ID (=5) por JSON"+"\n"+ proyectoController.getProyectoByIdJSON(5L));
+        System.out.println("GET PROYECTO por ID (=7) por JSON"+"\n"+ proyectoController.getProyectoByIdJSON(7L));
+    }
     private void Programadores(){
         System.out.println("INICIO DE PROGRAMADORES")  ;
         ProgramadorController programadorController = ProgramadorController.getInstance();
