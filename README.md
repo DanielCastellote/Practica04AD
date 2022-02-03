@@ -19,5 +19,5 @@ Hemos realizado un diagrama para esquematizar toda nuestra BBDD y realizar todas
 ![diagrama](./diagrams/DiagramaClases.png);</br>
 
 ## Video y Repositorio
-Enlace a nuestro video: 
+Enlace a nuestro video: </br>
 Enlace a nuestro repositorio de trabajo: https://github.com/DanielCastellote/Practica04AD
